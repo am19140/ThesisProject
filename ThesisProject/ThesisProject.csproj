@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Views\Pages\" />
+    <Folder Include="wwwroot\Resources\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+@section Styles{
+    <link rel="stylesheet" href="~/css/LoginStyle.css" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+}
+
+
+
+<div class="container">
+    <div class="sign-in-form">
+        <form action="#" class="form">
+            <h1>Sign In</h1>
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Sign In</button>
+        </form>
+    </div>
+    <div class="image-container">
+        <img src="@Url.Content("~/Resources/loginImage.png")" class="image"/>
+        <h2>Here, you choose your mood</h2>
+    </div>
+</div>
