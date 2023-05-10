@@ -6,6 +6,7 @@ namespace ThesisProject.Context
 {
     public class DatabaseContext : DbContext
     {
+        public DatabaseContext() { }
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
 
@@ -18,11 +19,11 @@ namespace ThesisProject.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<UserModel>().Property(x => x.Username)
+            modelBuilder.Entity<UserModel>().Property(x => x.username)
                 .ValueGeneratedOnAdd();
-            modelBuilder.Entity<SongModel>().Property(x => x.SongId).IsRequired();
-            modelBuilder.Entity<HistoryModel>().Property(x => x.Id).IsRequired();
-            modelBuilder.Entity<LikedModel>().Property(x => x.Id).IsRequired();
+            modelBuilder.Entity<SongModel>().Property(x => x.songId).IsRequired();
+            modelBuilder.Entity<HistoryModel>().Property(x => x.id).IsRequired();
+            modelBuilder.Entity<LikedModel>().Property(x => x.id).IsRequired();
 
         }
     }

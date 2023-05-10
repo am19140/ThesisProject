@@ -1,4 +1,5 @@
-﻿
+﻿@model LoginModel
+
 @{
     ViewData["Title"] = "Login";
 }
@@ -12,11 +13,11 @@
 
 <div class="container">
     <div class="sign-in-form">
-        <form action="#" class="form">
+        <form asp-controller="Home" asp-action="Login" method="post" class="form">
             <h1>Sign In</h1>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Sign In</button>
+            <input type="text" placeholder="Email" class="input" asp-for="username" />
+            <input type="password" placeholder="Password" class="input" asp-for="password" />
+            <input type="submit" class="submit-btn" value="Submit" class="input" />
         </form>
     </div>
     <div class="image-container">

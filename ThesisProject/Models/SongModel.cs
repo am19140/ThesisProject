@@ -6,24 +6,24 @@ namespace ThesisProject.Models
     {
         [Required]
         [Key]
-        public int SongId { get; set; }
+        public int songId { get; set; }
 
         [Required]
-        public string SongName { get; set; }
+        public string songName { get; set; }
 
         [Required]
-        public string Duration { get; set; }
+        public string duration { get; set; }
 
         [Required]
-        public string Artist { get; set; }
+        public string artist { get; set; }
 
         [Required]
-        public string Mood { get; set; }
+        public string mood { get; set; }
 
         [Required]
-        public string Genre { get; set; }
+        public string genre { get; set; }
 
         [Required]
-        public string SongFile { get; set; }
+        public string songFile { get; set; }
     }
 }

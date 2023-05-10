@@ -7,12 +7,12 @@ namespace ThesisProject.Models
     {
         [Key]
         [NotMapped]
-        public int Id { get; set; }
+        public int id { get; set; }
 
         [Required]
-        public string Username { get; set; }
+        public string username { get; set; }
 
         [Required]
-        public int SongId { get; set; }
+        public int songId { get; set; }
     }
 }

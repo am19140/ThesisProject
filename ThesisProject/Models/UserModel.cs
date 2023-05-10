@@ -7,14 +7,14 @@ namespace ThesisProject.Models
     {
         [Required]
         [Key]
-        public string Username { get; set; }
+        public string username { get; set; }
         [Required]
         [MinLength(6,ErrorMessage ="Password should contain more than 6 characters.")]
-        public string Password { get; set; }
+        public string password { get; set; }
         [Required]
-        public string FullName { get; set; }
+        public string fullName { get; set; }
 
-        public string ProfileImage { get; set; }
+        public string profileImage { get; set; }
 
     }
 }
