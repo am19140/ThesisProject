@@ -12,7 +12,10 @@ namespace ThesisProject.Models
         [MinLength(6,ErrorMessage ="Password should contain more than 6 characters.")]
         public string password { get; set; }
         [Required]
-        public string fullName { get; set; }
+        public string firstname { get; set; }
+        
+        [Required]
+        public string lastname { get; set; }
 
         public string profileImage { get; set; }
 
