@@ -37,5 +37,25 @@
 }
 
 .song-managing{
+    position:absolute;
+    width:97%;
+    background-color:var(--primary-color-light);
+    bottom:0;
+    height:12%;
+    border-radius:20px;
+    margin-left:2%;
+    margin-bottom:1%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
 
+.buttons {
+    color: var(--text-color);
+    transition:var(--tran-03);
+    font-size: 40px;
+}
+
+.buttons .pause{
+    display:none;
 }

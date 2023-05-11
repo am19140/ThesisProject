@@ -9,10 +9,10 @@
 
 :root {
     /* ===== Colors ===== */
-    --body-color: #E4E9F7;
+    --body-color: white;
     --sidebar-color: #FFF;
-    --primary-color: #695CFE;
-    --primary-color-light: #F6F5FF;
+    --primary-color: #f5c0e0;
+    --primary-color-light: #ecf7ff;
     --toggle-color: #DDD;
     --text-color: #707070;
     --pink: #FF33CC;
@@ -257,6 +257,10 @@ body.dark .sidebar li a:hover{
     background-color:transparent;
 }
 
+body.dark .sidebar{
+    box-shadow:none;
+}
+
 
 
 .sidebar .menu-bar {
@@ -344,7 +348,7 @@ body.dark .switch::before {
     left: 250px;
     height: 100vh;
     width: calc(100% - 250px);
-    background-color:white;
+    background-color:var(--body-color);
     transition: var(--tran-05);
 }
 
@@ -362,5 +366,9 @@ body.dark .switch::before {
 }
 
 body.dark .home .text {
+    color: var(--text-color);
+}
+
+body.dark .home .smalltext {
     color: var(--text-color);
 }
