@@ -57,7 +57,7 @@
             </div>
             <div class="bottom-content">
                 <li class="">
-                    <a class="logoutbtn" href="#">
+                    <a class="logoutbtn" asp-controller="Home" asp-action="Login">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
                     </a>
@@ -82,13 +82,26 @@
 
         <div class="header">
             <div class="text title">Homepage</div>
-            <div class ="username">@Html.DisplayFor(model=>model.username) </div>
+            <div class="right-corner">
+                <img src="~/Resources/icons8-male-user-24 (1).png"></img>
+                <div class="username">@Html.DisplayFor(model=>model.username) </div>
+            </div>
         </div>
         <div class="main">
 
         </div>
 
+
+        <div class="song-managing">
+
+        </div>
+
     </section>
+
+
+
+
+    <!--Javascripts-->
     <script>
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),

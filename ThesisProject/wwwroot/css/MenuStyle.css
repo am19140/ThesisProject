@@ -24,11 +24,13 @@
     --tran-03: all 0.3s ease;
     --tran-04: all 0.3s ease;
     --tran-05: all 0.3s ease;
+    --light-blue2: #c1e3fe;
+    --light-pink2: #f5c0e0;
 }
 
 body {
     min-height: 100vh;
-    background-color: var(--body-color);
+    background-color: #F6F5FF;
     transition: var(--tran-05);
 }
 
@@ -61,6 +63,7 @@ body.dark {
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
+    box-shadow: 1px 0px 6px 0.3px lightgrey ;
 }
 
     .sidebar.close {
@@ -341,7 +344,7 @@ body.dark .switch::before {
     left: 250px;
     height: 100vh;
     width: calc(100% - 250px);
-    background-color: var(--body-color);
+    background-color:white;
     transition: var(--tran-05);
 }
 
