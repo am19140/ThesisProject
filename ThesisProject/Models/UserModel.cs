@@ -17,7 +17,7 @@ namespace ThesisProject.Models
         [Required]
         public string lastname { get; set; }
 
-        public string profileImage { get; set; }
+        public string? profileImage { get; set; }
 
     }
 }

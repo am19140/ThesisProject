@@ -11,17 +11,34 @@
 
 
 
-<div class="container">
+<div class="page">
     <div class="sign-in-form">
         <form asp-controller="Home" asp-action="Login" method="post" class="form">
             <h1>Sign In</h1>
-            <input type="text" placeholder="Email" class="input" asp-for="username" />
-            <input type="password" placeholder="Password" class="input" asp-for="password" />
-            <input type="submit" class="submit-btn" value="Submit" class="input" />
+            <div class="inputs">
+                <input type="text" placeholder="Username" class="input" asp-for="username" />
+            </div>
+            <div class="inputs">
+                <input type="password" placeholder="Password" class="input" asp-for="password">
+
+            </div>
+            <div class="error" id="error">
+            </div>
+            <input type="submit" class="submit-btn" value="Submit" class="input" onclick="myfunction()"/>
         </form>
+        <div class="register">
+            <h4>Don't have an account yet?</h4>
+            <h5>Sign up</h5>
+        </div>
     </div>
     <div class="image-container">
-        <img src="@Url.Content("~/Resources/loginImage.png")" class="image"/>
-        <h2>Here, you choose your mood</h2>
+        <img src="@Url.Content("~/Images/undraw_happy_music_g6wc-removebg.png")" class="image" />
+        <h2>Here, <i>you</i> choose your mood</h2>
     </div>
 </div>
+
+@if (Model != null && !Model.isLoginConfirmed)
+{
+    <script type="text/javascript" src="~/js/LoginScript.js">
+    </script>
+}
