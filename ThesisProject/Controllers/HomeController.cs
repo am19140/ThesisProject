@@ -28,11 +28,38 @@ namespace ThesisProject.Controllers
         public IActionResult Homepage() {
             return View();
         }
-        public IActionResult Login() {
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+           
+         public IActionResult Moods(string username) {
+
+            ViewBag.username = username;
+
             return View();
 
            
         }
+        
+        public IActionResult Favorites(string username) {
+
+            ViewBag.username = username;
+
+            return View();
+           
+        }
+        public IActionResult Profile(string username) {
+
+            ViewBag.username = username;
+
+            return View();
+           
+        }
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
 
