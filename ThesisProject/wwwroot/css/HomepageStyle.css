@@ -54,8 +54,16 @@
     color: var(--text-color);
     transition:var(--tran-03);
     font-size: 40px;
+    display:flex;
+    flex-direction:row;
+}
+
+.buttons i{
+    cursor:pointer;
+
 }
 
 .buttons .pause{
     display:none;
 }
+

@@ -95,8 +95,8 @@
         <div class="song-managing">
             <div class="buttons">
                 <i class='bx bx-skip-previous'></i>
-                <i class='bx bx-pause pause'></i>
-                <i class='bx bx-play bx-flip-vertical play'></i>
+                <i class='bx bx-pause pause' onclick="Hide()"></i>
+                <i class='bx bx-play bx-flip-vertical play' onclick="Hide()"></i>
                 <i class='bx bx-skip-next'></i>
             </div>
         </div>
@@ -108,12 +108,31 @@
 
     <!--Javascripts-->
     <script>
+        function Hide(){
+            
+            const play = document.querySelector('[class*=play]');
+            const pause = document.querySelector('[class*=pause]');
+            if (play.style.display === 'block' && pause.style.display==='none') {
+                play.style.display='none';
+                pause.style.display='block';
+                            }
+            else {
+                play.style.display = 'block';
+                pause.style.display = 'none';
+            }
+
+           
+        }
+        
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),
             toggle = body.querySelector(".toggle"),
             searchBtn = body.querySelector(".search-box"),
             modeSwitch = body.querySelector(".toggle-switch"),
-            modeText = body.querySelector(".mode-text");
+            modeText = body.querySelector(".mode-text"),
+            buttonplay = body.querySelector(".play"),
+            buttonpause=body.querySelector(".pause");
+
         toggle.addEventListener("click", () => {
             sidebar.classList.toggle("close");
         })
@@ -130,6 +149,8 @@
 
             }
         });
+
+        
     </script>
 </body>
 
