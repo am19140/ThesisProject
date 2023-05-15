@@ -36,10 +36,21 @@ namespace ThesisProject.Controllers
         }
 
            
-         public IActionResult Moods(string username) {
+         public IActionResult Moods(string mood) {
 
-            ViewBag.username = username;
+            ViewBag.mood = mood;
 
+            return View();
+
+           
+        }
+        public IActionResult Playlists(string mood) {
+
+            ViewBag.mood = mood;
+            NpgsqlConnection connection = Database.Database.Connection();
+            NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("select * " +
+                "from songs where " +
+                "mood='{0}'",mood), connection);
             return View();
 
            
@@ -59,6 +70,10 @@ namespace ThesisProject.Controllers
             return View();
            
         }
+        
+     
+
+
 
 
 

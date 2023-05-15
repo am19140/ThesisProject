@@ -1,7 +1,7 @@
-﻿@model SongModel
+﻿@model List<SongModel>
 
 @section Styles{
-    <link rel="stylesheet" href="~/css/MoodsStyle.css" />
+
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
@@ -37,19 +37,19 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="moodbtn" href="#">
+                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
                             <i class='bx bx-happy-alt icon'></i>
                             <span class="text nav-text">Moods</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="profbtn" href="#">
                             <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
@@ -82,40 +82,29 @@
     <section class="home">
 
         <div class="header">
-            <div class="text title">Moods</div>
+            <div class="text title">@ViewBag.mood</div>
             <div class="right-corner">
                 <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-               
                 <div class="smalltext username ">@ViewBag.username </div>
             </div>
         </div>
-
         <div class="main">
-                <div class="left-container containers">
+            <div class="song-list">
+                <table>
+                    @if (Model!=null)
+                    {
+                        @foreach (var item in @model)
+                        {
+                            <tr>@item.artist</tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>There are no songs for the mood @ViewBag.mood</tr>
+                    }
 
-                <form asp-controller="Home" asp-action="Playlists" method="post">
-                    <div class="left-up">
-                        <input type="hidden" name="mood" value="happy" />
-                        <input type="submit" class="mood"   value="happy"  />
-                    </div>
-                </form>
-                    
-                <form asp-controller="Home" asp-action="Playlists" method="post">
-                    <div class="left-down" id="dance">
-                        <input type="hidden" name="mood" value="dance"/>
-                        <input type="submit" class="mood" value="dance" />
-                    </div>
-                </form>
-                </div>
-
-                <div class="middle-container containers">
-
-                </div>
-                <div class="right-container containers">
-
-                </div>
-            
-
+                </table>
+            </div>
         </div>
 
 
@@ -130,25 +119,25 @@
 
     </section>
 
-    
+
     <!--Javascripts-->
     <script>
-        function Hide(){
-            
+        function Hide() {
+
             const play = document.querySelector('[class*=play]');
             const pause = document.querySelector('[class*=pause]');
-            if (play.style.display === 'block' && pause.style.display==='none') {
-                play.style.display='none';
-                pause.style.display='block';
-                            }
+            if (play.style.display === 'block' && pause.style.display === 'none') {
+                play.style.display = 'none';
+                pause.style.display = 'block';
+            }
             else {
                 play.style.display = 'block';
                 pause.style.display = 'none';
             }
 
-           
+
         }
-        
+
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),
             toggle = body.querySelector(".toggle"),
@@ -156,7 +145,7 @@
             modeSwitch = body.querySelector(".toggle-switch"),
             modeText = body.querySelector(".mode-text"),
             buttonplay = body.querySelector(".play"),
-            buttonpause=body.querySelector(".pause");
+            buttonpause = body.querySelector(".pause");
 
         toggle.addEventListener("click", () => {
             sidebar.classList.toggle("close");
@@ -175,17 +164,9 @@
             }
         });
 
-        const p =document.getElementById("happy value"), 
-            link = document.getElementById(".mood");
 
-            function pressed(id){
-                link.addEventListener("click",()=>{
-                p.innerHTML=id;
-                })
-            }
-            
-      
-        
     </script>
 </body>
+
+
 
