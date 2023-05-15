@@ -96,6 +96,7 @@
                 <form asp-controller="Home" asp-action="Playlists" method="post">
                     <div class="left-up">
                         <input type="hidden" name="mood" value="happy" />
+                        <input type="hidden" name ="username" value="@ViewBag.username"/>
                         <input type="submit" class="mood"   value="happy"  />
                     </div>
                 </form>

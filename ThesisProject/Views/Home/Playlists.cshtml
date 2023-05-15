@@ -1,8 +1,9 @@
-﻿@model List<SongModel>
+﻿@model IEnumerable<SongModel>
 
 @section Styles{
 
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link rel="stylesheet" href="~/css/PlaylistsStyle.css" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
 }
@@ -82,7 +83,7 @@
     <section class="home">
 
         <div class="header">
-            <div class="text title">@ViewBag.mood</div>
+            <div class="text title">Your @ViewBag.mood playlist</div>
             <div class="right-corner">
                 <img src="~/Resources/icons8-male-user-24 (1).png"></img>
                 <div class="smalltext username ">@ViewBag.username </div>
@@ -91,11 +92,27 @@
         <div class="main">
             <div class="song-list">
                 <table>
-                    @if (Model!=null)
+                    @if (Model.Count() != 0)
                     {
-                        @foreach (var item in @model)
+                        <thead>
+                            <tr>
+                                <td class="sname h  text">Song</td>
+                                <td class="artist h text">Artist</td>
+                                <td class="duration  h text">Duration</td>
+                            </tr>
+                            
+                        </thead>
+                        @foreach (var item in Model)
                         {
-                            <tr>@item.artist</tr>
+
+                            <tr>
+                                <td class="sname text">@item.songname</td>
+                                <td class="artist text">@item.artist</td>
+                                <td class="duration text">@item.duration</td>
+                                <td><i class='bx bx-heart icon'></i></td>
+                                
+                                
+                            </tr>
                         }
                     }
                     else

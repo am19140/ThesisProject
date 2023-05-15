@@ -36,23 +36,36 @@ namespace ThesisProject.Controllers
         }
 
            
-         public IActionResult Moods(string mood) {
+         public IActionResult Moods(string username) {
 
-            ViewBag.mood = mood;
-
+            ViewBag.username = username;
             return View();
 
            
         }
-        public IActionResult Playlists(string mood) {
+        public IActionResult Playlists(string mood,string username) {
 
             ViewBag.mood = mood;
+            ViewBag.username = username;
+            List<SongModel> songModel = new List<SongModel>();
             NpgsqlConnection connection = Database.Database.Connection();
-            NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("select * " +
-                "from songs where " +
+            NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("SELECT artist, " +
+                "songname,duration " +
+                "from songs WHERE " +
                 "mood='{0}'",mood), connection);
-            return View();
+            while (output.Read())
+            {
+                SongModel model = new SongModel();
+                model.artist = output.GetString(0);
+                model.songname = output.GetString(1);
+                model.duration = output.GetString(2);
+                songModel.Add(model);
 
+
+            }
+            connection.Close();
+
+            return View("Playlists",songModel);
            
         }
         

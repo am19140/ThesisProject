@@ -9,7 +9,7 @@ namespace ThesisProject.Models
         public int songId { get; set; }
 
         [Required]
-        public string songName { get; set; }
+        public string songname { get; set; }
 
         [Required]
         public string duration { get; set; }
@@ -24,6 +24,6 @@ namespace ThesisProject.Models
         public string genre { get; set; }
 
         [Required]
-        public string songFile { get; set; }
+        public string songfile { get; set; }
     }
 }
