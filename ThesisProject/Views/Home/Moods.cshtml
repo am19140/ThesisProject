@@ -1,4 +1,4 @@
-﻿@model UserModel
+﻿@model SongModel
 
 @section Styles{
     <link rel="stylesheet" href="~/css/MoodsStyle.css" />
@@ -89,7 +89,25 @@
                 <div class="smalltext username ">@ViewBag.username </div>
             </div>
         </div>
+
         <div class="main">
+            <div class="left-container containers">
+                <a class="left-up" id="happy" class="profbtn" asp-controller="Home" asp-action="Playlist"
+                asp-route-mood="@ViewBag.mood">
+                Happy
+                </a>
+                <div class="left-down" id="dance">
+
+                </div>
+            </div>
+            <div class="middle-container containers">
+
+            </div>
+            <div class="right-container containers">
+
+            </div>
+
+
         </div>
 
 
@@ -148,6 +166,10 @@
 
             }
         });
+
+        document.getElementById('happy').addEventListener('click',function (){
+            var id=this.id;
+        })
 
         
     </script>

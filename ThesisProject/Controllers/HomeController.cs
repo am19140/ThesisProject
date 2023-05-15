@@ -25,7 +25,9 @@ namespace ThesisProject.Controllers
             return View();
         }
         
-        public IActionResult Homepage() {
+        public IActionResult Homepage(string username) {
+            ViewBag.username = username;
+
             return View();
         }
         public IActionResult Login()
