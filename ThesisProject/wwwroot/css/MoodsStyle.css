@@ -8,6 +8,7 @@
     --primary-color-light: #F6F5FF;
     --toggle-color: #DDD;
     --text-color: #707070;
+    --light-text-color: #white;
     --pink: #FF33CC;
     --light-pink: #FF66CC;
     --light-blue: #33CCFF;
@@ -47,27 +48,88 @@
     height:100%;
     display:flex;
     flex-direction:row;
+    padding-left:3%;
 }
 .containers{
     width:100%;
     height:100%;
+    padding:1%;
+
 }
     .left-container{
         display:flex;
-        flex-direction:column;       
+        flex-direction:column;   
+        height:100%;
+        width:100%;
+        flex:1 2 auto;
 
     }
-    .left-container .left-up,.left-down{
+     form{
         height:100%;
         width:100%;
         border-radius:20px;
-        background-color:var(--yellow);
-        margin-left: 8% ;
-        margin-bottom:5%;
-        
+        display:flex;
+        align-items:center;
+        justify-content:center;  
         
     }
+     .left-container form{
+        margin-bottom:3%;
 
+     }
+
+    input[type=submit]{
+        background-color:transparent;
+        cursor:pointer;
+        border:0px;
+        font-size:20px;
+        color:#FFF;
+    }
+
+    .left-form-up {
+        background-color: var(--yellow);
+    }
+
+    .left-form-down{
+        background-color:var(--green);
+    }
+
+    .up1{
+        background-color:var(--light-blue);
+
+    }
+    .up2 {
+        background-color: var(--primary-color);
+    }
+    .up3 {
+        background-color: var(--light-pink);
+    }
+
+    .down1 {
+        background-color: var(--text-color);
+    }
+.down2 {
+    background-color: var(--light-blue);
+}
+
+
+.right-container {
+    display: flex;
+    flex-direction: column;
+}
+    .right-container form {
+        margin-bottom: 1%;
+        margin-right:2%;
+    }
+
+    .right-container .right-upper,.right-down{
+        display:flex;
+        flex-direction:row;
+    }
+
+    .right-upper form{
+
+    }
 .song-managing {
     width: 97%;
     background-color: var(--primary-color-light);
@@ -79,7 +141,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top:auto;
+    margin-top: auto;
 }
 
 .buttons {

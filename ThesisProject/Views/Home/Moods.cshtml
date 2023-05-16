@@ -93,27 +93,55 @@
         <div class="main">
                 <div class="left-container containers">
 
-                <form asp-controller="Home" asp-action="Playlists" method="post">
-                    <div class="left-up">
-                        <input type="hidden" name="mood" value="happy" />
-                        <input type="hidden" name ="username" value="@ViewBag.username"/>
-                        <input type="submit" class="mood"   value="happy"  />
-                    </div>
+                <form asp-controller="Home" asp-action="Playlists" method="post" class="left-form-up">                                           
+                    <input type="hidden" name="mood" value="happy" />                        
+                    <input type="hidden" name ="username" value="@ViewBag.username"/>                        
+                    <input type="submit" class="mood"   value="happy"  />
+                    
                 </form>
                     
-                <form asp-controller="Home" asp-action="Playlists" method="post">
-                    <div class="left-down" id="dance">
-                        <input type="hidden" name="mood" value="dance"/>
-                        <input type="submit" class="mood" value="dance" />
-                    </div>
+                <form asp-controller="Home" asp-action="Playlists" method="post" class="left-form-down">
+
+                    <input type="hidden" name="mood" value="dance"/>                        
+                    <input type="submit" class="mood" value="dance" />
+                    
                 </form>
-                </div>
-
-                <div class="middle-container containers">
-
-                </div>
+                </div>                
                 <div class="right-container containers">
+                    <div class="right-upper containers">
+                    <form asp-controller="Home" asp-action="Playlists" method="post" class="up1">
+                        <input type="hidden" name="mood" value="sad" />
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="submit" class="mood" value="sad" />
 
+                    </form>
+                    <form asp-controller="Home" asp-action="Playlists" method="post" class="up2">
+                        <input type="hidden" name="mood" value="chill" />
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="submit" class="mood" value="chill" />
+
+                    </form>
+                    <form asp-controller="Home" asp-action="Playlists" method="post" class="up3">
+                        <input type="hidden" name="mood" value="heartbroken" />
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="submit" class="mood" value="heartbroken" />
+
+                    </form>
+                    </div>
+                    <div class="right-down containers">
+                    <form asp-controller="Home" asp-action="Playlists" method="post" class="down1">
+                        <input type="hidden" name="mood" value="inlove" />
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="submit" class="mood" value="inlove" />
+
+                    </form>
+                    <form asp-controller="Home" asp-action="Playlists" method="post" class="down2">
+                        <input type="hidden" name="mood" value="sad" />
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="submit" class="mood" value="workout" />
+
+                    </form>
+                    </div>
                 </div>
             
 

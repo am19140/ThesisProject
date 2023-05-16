@@ -15,6 +15,7 @@
     --primary-color-light: #ecf7ff;
     --toggle-color: #DDD;
     --text-color: #707070;
+    --light-text-color: #white;
     --pink: #FF33CC;
     --light-pink: #FF66CC;
     --light-blue: #33CCFF;
@@ -46,6 +47,7 @@ body.dark {
     --primary-color-light: #2B1372;
     --toggle-color: #fff;
     --text-color: #ccc;
+    --light-text-color: #white;
     --pink: #FF33CC;
     --light-pink: #FF66CC;
     --light-blue: #33CCFF;
