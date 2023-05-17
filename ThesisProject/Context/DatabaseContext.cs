@@ -20,7 +20,7 @@ namespace ThesisProject.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserModel>().Property(x => x.username)
-                .ValueGeneratedOnAdd();
+                .IsRequired();
             modelBuilder.Entity<SongModel>().Property(x => x.songId).IsRequired();
             modelBuilder.Entity<HistoryModel>().Property(x => x.id).IsRequired();
             modelBuilder.Entity<LikedModel>().Property(x => x.id).IsRequired();
