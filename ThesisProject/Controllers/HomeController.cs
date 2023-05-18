@@ -50,7 +50,7 @@ namespace ThesisProject.Controllers
             List<SongModel> songModel = new List<SongModel>();
             NpgsqlConnection connection = Database.Database.Connection();
             NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("SELECT artist, " +
-                "songname,duration " +
+                "songname,duration,songfile " +
                 "from songs WHERE " +
                 "mood='{0}'",mood), connection);
             while (output.Read())
@@ -59,6 +59,7 @@ namespace ThesisProject.Controllers
                 model.artist = output.GetString(0);
                 model.songname = output.GetString(1);
                 model.duration = output.GetString(2);
+                model.songfile= output.GetString(3);
                 songModel.Add(model);
 
 

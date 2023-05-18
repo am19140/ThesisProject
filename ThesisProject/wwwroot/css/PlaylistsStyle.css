@@ -87,6 +87,10 @@ table{
     }
 
 
+.song:hover{
+    cursor:pointer;
+}
+
 .song-managing {
     width: 97%;
     background-color: var(--primary-color-light);
