@@ -88,7 +88,6 @@ table{
 
 
 .song:hover{
-    cursor:pointer;
 }
 
 .song-managing {
@@ -104,13 +103,25 @@ table{
     justify-content: center;
     margin-top:auto;
 }
+.heart{
+    text-align:right;
+    font-size:15px;
+    cursor:pointer;
+}
 
-.buttons {
+.song-managing .buttons {
     color: var(--text-color);
     transition: var(--tran-03);
     font-size: 40px;
     display: flex;
     flex-direction: row;
+    cursor:pointer;
+}
+
+.song .buttons {
+    color: var(--text-color);
+    transition: var(--tran-03);
+    font-size: 20px;
 }
 
     .buttons i {
