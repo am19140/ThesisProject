@@ -116,11 +116,11 @@
                                 
                                 <td>
                                     <span class="play-icon" onclick="playAudio('@item.Song.songfile',this)">
-                                        <i class='bx bx-play bx-flip-vertical' ></i>
-
+                                        <i class='bx bx-play bx-flip-vertical' style="display:inline-block"></i>
+                                        <i class='bx bx-pause' style="display:none"></i>
                                     </span>
-                                    <span class="pause-icon hidden" onclick="playAudio('@item.Song.songfile',this)" style="display:none" >
-                                        <i class='bx bx-pause'></i>
+                                    <span class="pause-icon hidden" onclick="playAudio('@item.Song.songfile',this)"  >
+                                        
                                     </span>
                                 </td>                                
                                                                                               
@@ -163,10 +163,12 @@
 
     <!--Javascripts-->
     <script>
-        //function Hide() {
+        //function Hide(source,element) {
 
-        //    const play = document.querySelector('[class*=play]');
-        //    const pause = document.querySelector('[class*=pause]');
+        //    const play = element.querySelector('[class*=play]');
+        //    const pause = element.querySelector('[class*=pause]');
+        //    var audioPlayer = document.getElementById('audioplayer');
+
         //    if (play.style.display === 'block' && pause.style.display === 'none') {
         //        play.style.display = 'none';
         //        pause.style.display = 'block';
@@ -183,21 +185,22 @@
          function playAudio(source,element) {
 
             var audioPlayer = document.getElementById('audioplayer');
-            var playIcon = element.getElementsByClassName('bx-play')[0];
-            var pauseIcon = element.getElementsByClassName('bx-pause')[0];
+            var playIcon = element.querySelector('.bx-play');
+            var pauseIcon = element.querySelector('.bx-pause');
 
 
             if (!audioPlayer.paused ) {
                 audioPlayer.pause();
-                pauseIcon.classList.add('hidden');
-                playIcon.classList.remove('hidden')
+                playIcon.style.display='none';
+                pauseIcon.style.display='';
 
             }
             else if (audioPlayer.paused) {
                 audioPlayer.src=source;
                 audioPlayer.play();
-                pauseIcon.classList.remove('hidden');
-                playIcon.classList.add('hidden');
+                playIcon.style.display = '';
+                pauseIcon.style.display = 'none';
+                
             }
             
 

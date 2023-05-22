@@ -50,6 +50,8 @@ namespace ThesisProject.Controllers
             var SongModel = _songService.getSongList(username,mood);
             ViewBag.mood = mood;
             ViewBag.username = username;
+            return View("Playlists",SongModel);
+
             //List<SongModel> songModel = new List<SongModel>();
             //List<bool> isLiked = new List<bool>();
             //NpgsqlConnection connection = Database.Database.Connection();
@@ -70,7 +72,7 @@ namespace ThesisProject.Controllers
             //}
             //connection.Close();
 
-            return View("Playlists",SongModel);
+            
            
         }
         
