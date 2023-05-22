@@ -9,10 +9,12 @@ namespace ThesisProject.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly SongService _songService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, SongService songService)
         {
             _logger = logger;
+            _songService = songService; 
         }
 
         public IActionResult Index()
@@ -45,28 +47,30 @@ namespace ThesisProject.Controllers
         }
         public IActionResult Playlists(string mood,string username) {
 
+            var SongModel = _songService.getSongList(username,mood);
             ViewBag.mood = mood;
             ViewBag.username = username;
-            List<SongModel> songModel = new List<SongModel>();
-            NpgsqlConnection connection = Database.Database.Connection();
-            NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("SELECT artist, " +
-                "songname,duration,songfile " +
-                "from songs WHERE " +
-                "mood='{0}'",mood), connection);
-            while (output.Read())
-            {
-                SongModel model = new SongModel();
-                model.artist = output.GetString(0);
-                model.songname = output.GetString(1);
-                model.duration = output.GetString(2);
-                model.songfile= output.GetString(3);
-                songModel.Add(model);
+            //List<SongModel> songModel = new List<SongModel>();
+            //List<bool> isLiked = new List<bool>();
+            //NpgsqlConnection connection = Database.Database.Connection();
+            //NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("SELECT artist, " +
+            //    "songname,duration,songfile " +
+            //    "from songs WHERE " +
+            //    "mood='{0}'",mood), connection);
+            //while (output.Read())
+            //{
+            //    SongModel model = new SongModel();
+            //    model.artist = output.GetString(0);
+            //    model.songname = output.GetString(1);
+            //    model.duration = output.GetString(2);
+            //    model.songfile= output.GetString(3);
+            //    songModel.Add(model);
 
 
-            }
-            connection.Close();
+            //}
+            //connection.Close();
 
-            return View("Playlists",songModel);
+            return View("Playlists",SongModel);
            
         }
         

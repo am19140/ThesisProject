@@ -63,6 +63,13 @@ table{
     font-weight:400;
     padding:0;
 }
+.song .play{
+    cursor:pointer;
+}
+
+.pause-icon{
+    cursor:pointer;
+}
 
  .duration{
     text-align:right;
@@ -87,8 +94,6 @@ table{
     }
 
 
-.song:hover{
-}
 
 .song-managing {
     width: 97%;
@@ -103,7 +108,7 @@ table{
     justify-content: center;
     margin-top:auto;
 }
-.heart{
+.heart,.full-heart{
     text-align:right;
     font-size:15px;
     cursor:pointer;
@@ -128,6 +133,4 @@ table{
         cursor: pointer;
     }
 
-    .buttons .pause {
-        display: none;
-    }
+   

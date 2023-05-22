@@ -1,12 +1,14 @@
 using ThesisProject.Context;
 using Microsoft.EntityFrameworkCore;
+using ThesisProject.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<DatabaseContext>(x => x.UseNpgsql(builder.Configuration.GetConnectionString("Musification")));
-
+builder.Services.AddScoped<SongService>();
+builder.Services.AddScoped<HomeController>();
 
 var app = builder.Build();
 
