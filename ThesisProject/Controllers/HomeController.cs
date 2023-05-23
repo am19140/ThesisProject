@@ -55,6 +55,13 @@ namespace ThesisProject.Controllers
            
         }
 
+        public IActionResult Favorites(string username) {
+            ViewBag.username=username;
+            var model = _songService.getLikedSongs(username);
+            return View("Favorites",model);
+
+        }
+
         [HttpPost]
         public IActionResult LikeUnlike(string username,string mood,int songid,bool isLiked )
         {
@@ -66,14 +73,21 @@ namespace ThesisProject.Controllers
             
             return View("Playlists",SongModel);
         }
-        
-        public IActionResult Favorites(string username) {
 
+        [HttpPost]
+        public IActionResult Unlike(string username,string mood,int songid,bool isLiked )
+        {
             ViewBag.username = username;
-
-            return View();
-           
+            ViewBag.mood = mood;
+            ViewBag.songid = songid;
+            ViewBag.isLiked = isLiked;
+            var SongModel = _songService.UnLike(username, mood,songid,isLiked);            
+            return View("Favorites",SongModel);
         }
+
+         
+        
+        
         public IActionResult Profile(string username) {
 
             ViewBag.username = username;

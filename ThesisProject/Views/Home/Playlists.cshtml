@@ -111,13 +111,13 @@
                         </thead>
                         @foreach (var item in Model)
                         {
-                            
+               
                             <tr class="song" >                            
                                 
                                 <td>
-                                    <span class="play-icon" onclick="playAudio('@item.Song.songfile',this)">
-                                        <i class='bx bx-play bx-flip-vertical' style="display:inline-block"></i>
-                                        <i class='bx bx-pause' style="display:none"></i>
+                                    <span class="play-icon " onclick="playAudio('@item.Song.songfile',this)">
+                                        <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>
+                                        <i class='bx bx-pause buttons' style="display:none"></i>
                                     </span>
                                     <span class="pause-icon hidden" onclick="playAudio('@item.Song.songfile',this)"  >
                                         
@@ -166,7 +166,7 @@
 
                 </table>
             </div>
-        </div>
+       </div>
 
 
         <div class="song-managing">
