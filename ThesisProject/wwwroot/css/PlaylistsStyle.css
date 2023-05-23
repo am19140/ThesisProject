@@ -133,4 +133,16 @@ table{
         cursor: pointer;
     }
 
+    .like-btn{
+        text-align:center;
+    }
+.heart {   
+    background-color: transparent;
+    cursor: pointer;
+    border: 0px;
+    font-size: 20px;
+    color: #FFF;
+}
+
+
    

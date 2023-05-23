@@ -28,6 +28,7 @@ namespace ThesisProject.Controllers
         }
         
         public IActionResult Homepage(string username) {
+
             ViewBag.username = username;
 
             return View();
@@ -50,30 +51,20 @@ namespace ThesisProject.Controllers
             var SongModel = _songService.getSongList(username,mood);
             ViewBag.mood = mood;
             ViewBag.username = username;
-            return View("Playlists",SongModel);
-
-            //List<SongModel> songModel = new List<SongModel>();
-            //List<bool> isLiked = new List<bool>();
-            //NpgsqlConnection connection = Database.Database.Connection();
-            //NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("SELECT artist, " +
-            //    "songname,duration,songfile " +
-            //    "from songs WHERE " +
-            //    "mood='{0}'",mood), connection);
-            //while (output.Read())
-            //{
-            //    SongModel model = new SongModel();
-            //    model.artist = output.GetString(0);
-            //    model.songname = output.GetString(1);
-            //    model.duration = output.GetString(2);
-            //    model.songfile= output.GetString(3);
-            //    songModel.Add(model);
-
-
-            //}
-            //connection.Close();
-
-            
+            return View("Playlists",SongModel);           
            
+        }
+
+        [HttpPost]
+        public IActionResult LikeUnlike(string username,string mood,int songid,bool isLiked )
+        {
+            ViewBag.username = username;
+            ViewBag.mood = mood;
+            ViewBag.songid = songid;
+            ViewBag.isLiked = isLiked;
+            var SongModel = _songService.Like(username, mood,songid,isLiked);
+            
+            return View("Playlists",SongModel);
         }
         
         public IActionResult Favorites(string username) {

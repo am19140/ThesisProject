@@ -38,7 +38,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="profbtn" href="#">
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
                             <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
@@ -85,7 +85,7 @@
         <div class="header">
             <div class="text title">Your @ViewBag.mood playlist</div>
             <div class="right-corner">
-                <img src="~/Resources/icons8-male-user-24 (1).png"></img>
+                <img src="~/Resources/icons8-male-user-24 (1).png"/>
                 <div class="smalltext username ">@ViewBag.username </div>
             </div>
         </div>
@@ -129,11 +129,32 @@
                                 <td class="duration text">@item.Song.duration</td>
                                 @if (!item.isLiked)
                                 {
-                                    <td class="heart"><i class='bx bx-heart icon buttons'></i></td>
+                                    <td>
+                                        <form asp-controller="Home" asp-action="LikeUnlike" method="post" class="like-btn">
+                                            <input type="hidden" name="username" value="@ViewBag.username" />
+                                            <input type="hidden" name="mood" value="@item.Song.mood" />
+                                            <input type="hidden" name="songid" value="@item.Song.songId" />
+                                            <input type="hidden" name="isliked" value="@item.isLiked" />
+                                            <button type="submit" class="heart">
+                                                <i class='bx bx-heart icon buttons '></i>
+                                            </button>   
+                                        </form>
+                                    </td>                            
+
                                 }
                                 else
                                 {
-                                    <td class="full-heart"><i class='bx bxs-heart icon buttons'></i></td>
+                                    <td>
+                                        <form asp-controller="Home" asp-action="LikeUnlike" asp-route-username="@ViewBag.Username" method="post" class="like-btn">
+                                            <input type="hidden" name="username" value="@ViewBag.username" />
+                                            <input type="hidden" name="mood" value="@item.Song.mood" />
+                                            <input type="hidden" name="songid" value="@item.Song.songId" />
+                                            <input type="hidden" name="isliked" value="@item.isLiked" />
+                                            <button type="submit" class="heart">
+                                                <i class='bx bxs-heart icon buttons '></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 }
                             </tr>
                         }
@@ -191,15 +212,15 @@
 
             if (!audioPlayer.paused ) {
                 audioPlayer.pause();
-                playIcon.style.display='none';
-                pauseIcon.style.display='';
+                pauseIcon.style.display = 'none';
+                playIcon.style.display = 'inline-block';
 
             }
             else if (audioPlayer.paused) {
                 audioPlayer.src=source;
                 audioPlayer.play();
-                playIcon.style.display = '';
-                pauseIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline-block';
+                playIcon.style.display = 'none';
                 
             }
             
