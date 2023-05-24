@@ -1,5 +1,6 @@
 ﻿@model List<(SongModel Song, bool isLiked)>
 
+
 @section Styles{
 
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
@@ -115,13 +116,22 @@
                             <tr class="song" >                            
                                 
                                 <td>
-                                    <span class="play-icon " onclick="playAudio('@item.Song.songfile',this)">
-                                        <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>
-                                        <i class='bx bx-pause buttons' style="display:none"></i>
-                                    </span>
-                                    <span class="pause-icon hidden" onclick="playAudio('@item.Song.songfile',this)"  >
-                                        
-                                    </span>
+                                    <form asp-controller="Home" asp-action="HearingCounter" method="post">
+                                        <input type="hidden" name="username" value="@ViewBag.username" />
+                                        <input type="hidden" name="songid" value="@item.Song.songId" />
+                                        <input type="hidden" name="mood" value="@item.Song.mood" />
+
+                                        <span class="play-icon " >
+                                            <button type="submit"  onclick="playAudio('@item.Song.songfile',this)">
+                                                <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>
+                                                <i class='bx bx-pause buttons' style="display:none"></i>
+                                            </button>
+                                            
+                                            
+                                        </span>
+                                    </form>
+                                   
+                                    
                                 </td>                                
                                                                                               
                                 <td class="sname text">@item.Song.songname</td>
@@ -183,24 +193,7 @@
 
 
     <!--Javascripts-->
-    <script>
-        //function Hide(source,element) {
-
-        //    const play = element.querySelector('[class*=play]');
-        //    const pause = element.querySelector('[class*=pause]');
-        //    var audioPlayer = document.getElementById('audioplayer');
-
-        //    if (play.style.display === 'block' && pause.style.display === 'none') {
-        //        play.style.display = 'none';
-        //        pause.style.display = 'block';
-        //    }
-        //    else {
-        //        play.style.display = 'block';
-        //        pause.style.display = 'none';
-        //    }
-
-
-        //}
+    <script>    
 
 
          function playAudio(source,element) {

@@ -85,6 +85,17 @@ namespace ThesisProject.Controllers
             return View("Favorites",SongModel);
         }
 
+        [HttpPost]
+        public IActionResult HearingCounter(string username,int songid, string mood) 
+        { 
+            ViewBag.username = username;
+            ViewBag.songid=songid;
+            _songService.Counter(username, songid);
+            var SongModel = _songService.getSongList(username, mood);
+            return View("Playlists",SongModel);
+            
+        }
+
          
         
         

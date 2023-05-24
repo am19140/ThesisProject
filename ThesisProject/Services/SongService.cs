@@ -95,5 +95,29 @@ public class SongService
         return songs;
     }
 
+    public void Counter(string username,int songid)
+    {  
+        var songlistened = _context.history.FirstOrDefault(x=>x.songId== songid &&x.username==username);
+
+        if(songlistened != null)
+        {
+            songlistened.timesListened += 1;
+            _context.SaveChanges();
+        }
+        else
+        {
+            var listened_song = new HistoryModel
+            {
+                songId = songid,
+                username = username,
+                timesListened = 1
+            };
+            _context.history.Add(listened_song);
+            _context.SaveChanges();
+        }
+        
+
+    }
+
 
 }
