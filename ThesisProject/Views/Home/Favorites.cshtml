@@ -111,17 +111,14 @@
                         </thead>
                         @foreach (var item in Model)
                         {
-
                             <tr class="song">
-
                                 <td>
-                                    <span class="play-icon " onclick="playAudio('@item.songfile',this)">
-                                        <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>
-                                        <i class='bx bx-pause' style="display:none"></i>
-                                    </span>
-                                    <span class="pause-icon hidden" onclick="playAudio('@item.songfile',this)">
-
-                                    </span>
+                                    <span class="play-icon ">
+                                        <button type="submit" data-song-id="@item.songId" data-username="@ViewBag.username" data-file="@item.songfile" class="play-btn">
+                                            <i class='bx bx-play bx-flip-vertical buttons icon ' style="display:inline-block"></i>
+                                            <i class='bx bx-pause buttons icon' style="display:none"></i>
+                                        </button>
+                                    </span>                              
                                 </td>
 
                                 <td class="sname text">@item.songname</td>
@@ -166,31 +163,74 @@
 
 
     <!--Javascripts-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         
+        $(document).ready(function () {
+            $('.play-btn').click(function () {
+                var songId = $(this).data('song-id');
+                var username = $(this).data('username');
+                var file = $(this).data('file');
+                var playIcon = $(this).find('.bx-play');
+                var pauseIcon = $(this).find('.bx-pause');
 
-        function playAudio(source, element) {
+                $.ajax({
+                    url: '@Url.Action("HearingCounter", "Home")',
+                    type: 'POST',
+                    data: { songId: songId, username: username },
+                    // Perform an AJAX POST request to the 'PlaySong' action in the 'Songs' controller
+                    // The 'songId' parameter is sent in the request data
 
-            var audioPlayer = document.getElementById('audioplayer');
-            var playIcon = element.querySelector('.bx-play');
-            var pauseIcon = element.querySelector('.bx-pause');
+                    success: function (result) {
+
+                        var audioPlayer = document.getElementById('audioplayer');
+
+                        if (!audioPlayer.paused) {
+                            audioPlayer.pause();
+                            pauseIcon.toggle();
+                            playIcon.toggle();
+                        }
+                        else if (audioPlayer.paused) {
+                            audioPlayer.src = file;
+                            audioPlayer.play();
+                            pauseIcon.toggle();
+                            playIcon.toggle();
+                        }
+
+                        console.log('Song played successfully.');
+                    },
+                    error: function () {
+
+                        console.log('An error occurred while playing the song.');
+
+                    }
+                });
+            });
+        });
+
+        //function playAudio(source, element) {
+
+        //    var audioPlayer = document.getElementById('audioplayer');
+        //    var playIcon = element.querySelector('.bx-play');
+        //    var pauseIcon = element.querySelector('.bx-pause');
 
 
-            if (!audioPlayer.paused) {
-                audioPlayer.pause();
-                pauseIcon.style.display = 'none';
-                playIcon.style.display = 'inline-block';
+        //    if (!audioPlayer.paused) {
+        //        audioPlayer.pause();
+        //        pauseIcon.style.display = 'none';
+        //        playIcon.style.display = 'inline-block';
 
-            }
-            else if (audioPlayer.paused) {
-                audioPlayer.src = source;
-                audioPlayer.play();
-                pauseIcon.style.display = 'inline-block';
-                playIcon.style.display = 'none';
+        //    }
+        //    else if (audioPlayer.paused) {
+        //        audioPlayer.src = source;
+        //        audioPlayer.play();
+        //        pauseIcon.style.display = 'inline-block';
+        //        playIcon.style.display = 'none';
 
-            }
+        //    }
                        
-        }
+        //}
 
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),

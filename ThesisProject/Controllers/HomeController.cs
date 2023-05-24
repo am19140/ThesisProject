@@ -92,13 +92,23 @@ namespace ThesisProject.Controllers
             ViewBag.songid=songid;
             _songService.Counter(username, songid);
             var SongModel = _songService.getSongList(username, mood);
-            return View("Playlists",SongModel);
+            return Json( SongModel);
             
         }
 
-         
-        
-        
+
+        [HttpPost]
+        public IActionResult LikedHearingCounter(string username, int songid)
+        {
+            ViewBag.username = username;
+            ViewBag.songid = songid;
+            _songService.Counter(username, songid);
+            var SongModel = _songService.getLikedSongs(username);
+            return Json(SongModel);
+
+        }
+
+
         public IActionResult Profile(string username) {
 
             ViewBag.username = username;

@@ -115,22 +115,15 @@
                
                             <tr class="song" >                            
                                 
-                                <td>
-                                    <form asp-controller="Home" asp-action="HearingCounter" method="post">
-                                        <input type="hidden" name="username" value="@ViewBag.username" />
-                                        <input type="hidden" name="songid" value="@item.Song.songId" />
-                                        <input type="hidden" name="mood" value="@item.Song.mood" />
-
-                                        <span class="play-icon " >
-                                            <button type="submit"  onclick="playAudio('@item.Song.songfile',this)">
-                                                <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>
-                                                <i class='bx bx-pause buttons' style="display:none"></i>
-                                            </button>
-                                            
-                                            
-                                        </span>
-                                    </form>
-                                   
+                                <td>     
+                                    <span class="play-icon ">                                            
+                                        <button type="submit" data-song-id="@item.Song.songId" data-username="@ViewBag.username" data-file="@item.Song.songfile" class="play-btn">                                                
+                                            <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>                                                
+                                            <i class='bx bx-pause buttons' style="display:none"></i>                                            
+                                        </button>
+                                        
+                                    </span>
+                                  
                                     
                                 </td>                                
                                                                                               
@@ -193,7 +186,54 @@
 
 
     <!--Javascripts-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <script>    
+        $(document).ready(function () {
+            $('.play-btn').click(function () {
+                var songId = $(this).data('song-id');
+                var username = $(this).data('username');
+                var file = $(this).data('file');
+                var playIcon = $(this).find('.bx-play');
+                var pauseIcon = $(this).find('.bx-pause');
+
+                $.ajax({
+                    url: '@Url.Action("HearingCounter", "Home")',
+                    type: 'POST',
+                    data: { songId: songId,username:username },
+                    // Perform an AJAX POST request to the 'PlaySong' action in the 'Songs' controller
+                    // The 'songId' parameter is sent in the request data
+
+                    success: function (result) {
+
+                        var audioPlayer = document.getElementById('audioplayer');                      
+
+                        if (!audioPlayer.paused) {
+                            audioPlayer.pause();
+                           
+                            pauseIcon.toggle();
+                            playIcon.toggle();
+                            console.log(playIcon);
+                        }
+                        else if (audioPlayer.paused) {
+                            audioPlayer.src = file;
+                            audioPlayer.play();                            
+                            pauseIcon.toggle();
+                            playIcon.toggle();
+                        }
+
+                        console.log('Song played successfully.');
+                    },
+                    error: function () {
+                        // This function is executed when the AJAX request fails
+
+                        console.log('An error occurred while playing the song.');
+                       
+                    }
+                });
+            });
+        });
 
 
          function playAudio(source,element) {
@@ -216,23 +256,6 @@
                 playIcon.style.display = 'none';
                 
             }
-            
-
-            //
-            //var element = element.currentTarget;
-
-            //if(audioPlayer.paused){
-            //    audioPlayer.src = source;                
-            //    audioPlayer.play();
-            //    element.getElementsByClassName('play-button')[0].style.display = 'none';
-            //    document.getElementsByClassName('pause-button').style.display = 'inline';
-            //}                   
-                
-            //else {
-            //    audioPlayer.pause();
-            //    element.querySelector('.play-button').style.display = 'inline';
-            //    element.querySelector('pause-button').style.display = 'none';
-            //}
             
         }
 
@@ -265,6 +288,8 @@
 
     </script>
 </body>
+
+
 
 
 

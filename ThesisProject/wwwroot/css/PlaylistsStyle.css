@@ -80,6 +80,7 @@ th:last-child {
     transform: scale(1.01);
     background-color: var(--primary-color-light);
     transition:var(--tran-05);
+    
 }
 
 .song-list .text{
@@ -87,6 +88,9 @@ th:last-child {
     font-weight:400;
     padding:0;
 }
+    .song:hover .text,.buttons{
+        color: black;
+    }
 .song .play-icon {
     cursor: pointer;
     transition: var(--tran-05);
@@ -100,6 +104,8 @@ th:last-child {
  .duration{
     text-align:right;
 }
+
+
 
  .song-list .h{
      font-size:16px;
@@ -166,7 +172,7 @@ th:last-child {
         justify-content:center;
         align-items:center;
     }
-.heart {   
+.heart ,.play-btn {   
     background-color: transparent;
     cursor: pointer;
     border: 0px;
