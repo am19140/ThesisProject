@@ -350,8 +350,9 @@ body.dark .switch::before {
     left: 250px;
     height: 100vh;
     width: calc(100% - 250px);
-    background-color:var(--body-color);
+    background-color: var(--body-color);
     transition: var(--tran-05);
+    overflow: scroll;
 }
 
     .home .text {
@@ -360,6 +361,10 @@ body.dark .switch::before {
         color: var(--text-color);
         padding: 12px 60px;
     }
+
+.main{
+    
+}
 
 .sidebar.close ~ .home {
     left: 78px;

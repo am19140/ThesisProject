@@ -49,6 +49,7 @@
     padding-left: 6%;
     padding-right: 6%;
     padding-top:3%;
+    padding-bottom:2%;
 }
 
 table {
@@ -63,6 +64,13 @@ table {
 .song td{
    border:none;
    padding:0.07%;
+   max-width:100px;
+}
+
+.sname {
+    overflow-x:hidden;
+    white-space:nowrap;
+    margin-right:10%;
 }
 
 td:first-child,
