@@ -1,2 +1,95 @@
-﻿body {
+﻿:root {
+    /* ===== Colors ===== */
+    --body-color: #fff;
+    --sidebar-color: #FFF;
+    --primary-color: #f5c0e0;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --light-text-color: #white;
+    --pink: #FF33CC;
+    --light-pink: #FF66CC;
+    --light-blue: #33CCFF;
+    --yellow: #FFC000;
+    --green: #92D050;
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+.home {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.right-corner {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    font-size: 15px;
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+}
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+    padding-bottom:2%
+    
+}
+
+.main .information, .statistics{
+    width:100%;
+    height:100%;
+}
+
+    .main .information {
+        background-color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        margin-right: 2%;
+        flex-direction: column;
+        flex: 1 2 auto;
+    }
+
+.information table {
+    height: 100%;
+    width: 90%;
+  
+}
+
+.profile-img {
+    text-align: center;
+    width: 20%;
+    height:20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .profile-img img {
+        height: 100px;
+        width: 100px;
+
+    }
+
+.information .infotext{
+    font-size:15px;
+    text-align:left;
+    text-align:right;
+}
+
+.information .infoname{
+    color:var(--sidebar-color);
 }

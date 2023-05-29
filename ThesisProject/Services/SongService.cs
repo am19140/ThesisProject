@@ -119,5 +119,38 @@ public class SongService
 
     }
 
+    public  (UserModel,SongModel) getProfileInfo(string username)
+    {
+        var info = _context.users.FirstOrDefault(x=>x.username==username);
+        var mostplayed = from history in _context.history
+                         group history by history.username into usergroup
+                         select new HistoryModel
+                         {                             
+                             username = username,
+                             timesListened = usergroup.Max(x => x.timesListened),
+                             songId=usergroup.OrderByDescending(x=>x.timesListened).Select(x=>x.songId).FirstOrDefault()
+                             
+                         };
+        List<SongModel> songs = _context.songs.ToList();
+        var mostplayedsong = (from m in mostplayed.AsEnumerable()
+                             join
+                             s in songs on m.songId equals s.songId
+                             where m.username == username
+                             select new SongModel
+                             {
+                                 songId=s.songId,
+                                 songname=s.songname,
+                                 duration=s.duration,
+                                 artist=s.artist,
+                                 mood=s.mood,
+                                 genre=s.genre,
+                                 songfile=s.songfile
+                             }).FirstOrDefault();
+
+        var tuple = (info,mostplayedsong);     
+        return tuple;
+    }
+
+
 
 }

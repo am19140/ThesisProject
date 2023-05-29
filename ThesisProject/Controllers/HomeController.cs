@@ -112,8 +112,8 @@ namespace ThesisProject.Controllers
         public IActionResult Profile(string username) {
 
             ViewBag.username = username;
-
-            return View();
+            var profileinfo = _songService.getProfileInfo(username);
+            return View("Profile",profileinfo);
            
         }
         

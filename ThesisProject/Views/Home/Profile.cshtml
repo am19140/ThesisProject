@@ -1,7 +1,7 @@
-﻿@model UserModel
+﻿@model (UserModel,SongModel)
 
 @section Styles{
-    <link rel="stylesheet" href="~/css/MoodsStyle.css" />
+    <link rel="stylesheet" href="~/css/ProfileStyle.css" />
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
@@ -91,10 +91,45 @@
         </div>
         <div class="main">
             <div class="information">
-
+                <div class="profile-img">
+                    @if (!string.IsNullOrEmpty(Model.Item1.profileImage))
+                    {
+                        <img src="@Url.Content(Model.Item1.profileImage)" />
+                    }
+                    else
+                    {
+                        <img src="/Resources/icons8-male-user-96.png" />
+                    }
+                </div>
+                <table>
+                    
+                    <tr>
+                        <td class="infoname"><h4>Username</h4></td>
+                        <td class="infotext">
+                            <h4>@Model.Item1.username</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infoname"><h4>First Name</h4></td>
+                        <td class="infotext">
+                            <h4>@Model.Item1.firstname</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infoname"><h4>Last Name</h4></td>
+                        <td class="infotext">
+                            <h4>@Model.Item1.lastname</h4>
+                        </td>
+                    </tr>
+                </table>
+               
+                
             </div>
             <div class="statistics">
-
+                <div class="mostplayed">
+                    <h4>Your favorite song from all time</h4>
+                    <h3>@Model.Item2.songname</h3>
+                </div>
             </div>
         </div>
 
