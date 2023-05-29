@@ -90,35 +90,68 @@
             </div>
         </div>
         <div class="main">
-            <div class="information">
-                <div class="profile-img">
-                    @if (!string.IsNullOrEmpty(Model.Item1.profileImage))
-                    {
-                        <img src="@Url.Content(Model.Item1.profileImage)" />
-                    }
-                    else
-                    {
-                        <img src="/Resources/icons8-male-user-96.png" />
-                    }
-                </div>
-                <table>
+            <div class="information">                
+                <div class="image-editor" >
                     
-                    <tr>
-                        <td class="infoname"><h4>Username</h4></td>
+                    <div class="profile-img">
+                        @if (!string.IsNullOrEmpty(Model.Item1.profileImage))
+                        {
+                           <img class="profile-pic" src="@Url.Content(Model.Item1.profileImage)" />
+                        }
+                        else
+                        {
+                            <img src="/Resources/icons8-male-user-96.png" />
+                        }
+                        <div class="edit-btn icon">
+                            <i class='bx bx-pencil icon' id="pencil"></i>
+                        </div>
+                    </div>
+                    <form style ="display:none;" asp-controller="Home" enctype="multipart/form-data" asp-action="Upload" method="post" id="fileUploadForm">
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="file" name="file" id="ImageData"  />
+                        <button type="submit">Save Changes</button>
+
+                    </form>
+                </div>
+                
+                <table class="smalltext">
+                    <tr><td class ="infoname"><h4>Username</h4></td></tr>
+                    <tr>                        
                         <td class="infotext">
                             <h4>@Model.Item1.username</h4>
                         </td>
                     </tr>
                     <tr>
                         <td class="infoname"><h4>First Name</h4></td>
+                    </tr>
+                    <tr>
                         <td class="infotext">
                             <h4>@Model.Item1.firstname</h4>
                         </td>
                     </tr>
                     <tr>
                         <td class="infoname"><h4>Last Name</h4></td>
+
+                    </tr>
+                    <tr>
                         <td class="infotext">
                             <h4>@Model.Item1.lastname</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infoname"><h4>Email address</h4></td>
+                    </tr>
+                    <tr>
+                        <td class="infotext">
+                            <h4>@Model.Item1.email</h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="infoname"><h4>Gender</h4></td>
+                    </tr>
+                    <tr>
+                        <td class="infotext">
+                            <h4>@Model.Item1.gender</h4>
                         </td>
                     </tr>
                 </table>
@@ -126,21 +159,14 @@
                 
             </div>
             <div class="statistics">
-                <div class="mostplayed">
+                <div class="mostplayed smalltext" >
                     <h4>Your favorite song from all time</h4>
                     <h3>@Model.Item2.songname</h3>
                 </div>
             </div>
         </div>
 
-        <!--<div class="song-managing">
-            <div class="buttons">
-                <i class='bx bx-skip-previous'></i>
-                <i class='bx bx-pause pause' onclick="Hide()"></i>
-                <i class='bx bx-play bx-flip-vertical play' onclick="Hide()"></i>
-                <i class='bx bx-skip-next'></i>
-            </div>
-        </div>-->
+        
         
 
     </section>
@@ -161,8 +187,12 @@
                 pause.style.display = 'none';
             }
 
-
         }
+        var editor = document.getElementById('fileUploadForm');
+        var pencil = document.getElementById('pencil').addEventListener("click",()=>{
+            editor.style.display='block';
+        })
+      
 
         const body = document.querySelector('body'),
             sidebar = body.querySelector('nav'),

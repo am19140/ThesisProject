@@ -67,28 +67,83 @@
 .information table {
     height: 100%;
     width: 90%;
-  
+    padding-bottom:15%;
+    padding-top:2%;
 }
 
+
+.image-editor{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    
+}
+.edit{
+    background-color: transparent;
+    cursor: pointer;
+    border: 0px;
+    font-size: 20px;
+    color: #FFF;
+
+}
+.image-editor .icon{
+    color:var(--text-color);
+    cursor:pointer;
+}
 .profile-img {
-    text-align: center;
-    width: 20%;
-    height:20%;
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 8%;
+}
+.profile-img .pencil{
+
 }
     .profile-img img {
-        height: 100px;
-        width: 100px;
+        height:70px;
+        width:70px;
+        border-radius:50%;
+    }
+
+    .image-editor form{
+        display:flex;
+        flex-direction:column;
+        padding:2%;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
 
     }
 
-.information .infotext{
-    font-size:15px;
-    text-align:left;
-    text-align:right;
-}
+    .image-editor form input[type="file"]::file-selector-button{
+        background-color:white;
+        border-radius:20px;
+        padding:1%;
+        border:none;
+        text-align:center;
+        cursor:pointer;
+        margin-left:20%;
+    }
+        .image-editor form button {
+            background-color: white;
+            border-radius: 20px;
+            padding: 1%;
+            border: none;
+            cursor: pointer;
+            margin-top:1%;
+        }
+
+        .image-editor form button:hover{
+            transform:res
+        }
+        .information .infotext {
+            font-size: 15px;
+            text-align: left;
+        }
 
 .information .infoname{
     color:var(--sidebar-color);

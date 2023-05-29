@@ -19,5 +19,13 @@ namespace ThesisProject.Models
 
         public string? profileImage { get; set; }
 
+        [Required]
+        [RegularExpression(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$", ErrorMessage = "Insert a valid email address")]
+
+        public string email { get; set; }
+
+        [Required]
+        public string gender { get; set; }
+
     }
 }

@@ -3,6 +3,11 @@ using System.Diagnostics;
 using ThesisProject.Models;
 using Npgsql;
 using ThesisProject.Context;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+
+
 
 namespace ThesisProject.Controllers
 {
@@ -116,8 +121,31 @@ namespace ThesisProject.Controllers
             return View("Profile",profileinfo);
            
         }
+
+        [HttpPost]
+        public ActionResult Upload(IFormFile file,string username)
+        {
+            ViewBag.username = username;
+            if (file != null) {
+
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Resources", file.FileName);
+                using (var filestram = new FileStream(path, FileMode.Create))
+                {
+                    file.CopyTo(filestram);
+                }
+                _songService.SetProfilePicture(username, "/Resources/" + file.FileName);
+                var profileinfo = _songService.getProfileInfo(username);
+                return View("Profile", profileinfo);
+
+            }
+            else
+            {
+                var profileinfo = _songService.getProfileInfo(username);                            
+                return View("Profile",profileinfo);
+            }
+            
+        }
         
-     
 
 
 

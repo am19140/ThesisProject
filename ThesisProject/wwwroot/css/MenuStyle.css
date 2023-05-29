@@ -43,8 +43,8 @@ body {
 body.dark {
     --body-color: #1B0D48;
     --sidebar-color: #200F53;
-    --primary-color: #3a3b3c;
-    --primary-color-light: #2B1372;
+    --primary-color: #2b1372;
+    --primary-color-light: #F6F5FF;
     --toggle-color: #fff;
     --text-color: #ccc;
     --light-text-color: #white;

@@ -151,6 +151,15 @@ public class SongService
         return tuple;
     }
 
+    public void SetProfilePicture(string username,string path)
+    {
+        var user = _context.users.FirstOrDefault(x => x.username == username);
+        user.profileImage = path;
+        _context.SaveChanges();
+
+    }
+  
+
 
 
 }
