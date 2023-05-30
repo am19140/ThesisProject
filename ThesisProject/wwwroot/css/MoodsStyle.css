@@ -34,6 +34,10 @@
     width: 150px;
     justify-content: space-between;
 }
+.profbtn{
+    text-decoration:none;
+    color:var(--text-color);
+}
 .home{
     height:100%;
     display:flex;

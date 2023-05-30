@@ -85,8 +85,9 @@
             <div class="text title">Moods</div>
             <div class="right-corner">
                 <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-               
-                <div class="smalltext username ">@ViewBag.username </div>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">                    
+                    <span class="smalltext username ">@ViewBag.username</span>
+                </a>
             </div>
         </div>
 

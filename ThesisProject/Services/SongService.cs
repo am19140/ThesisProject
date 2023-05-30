@@ -121,20 +121,41 @@ public class SongService
     public  (UserModel,SongModel) getProfileInfo(string username)
     {
         var info = _context.users.FirstOrDefault(x=>x.username==username);
+        List<SongModel> songs = _context.songs.ToList();
+
+        //var x = (
+        //    from h in _context.history
+        //    join s in songs on h.songId equals s.songId
+        //    where h.username == username && h.timesListened > 0
+        //    group h by h.songId into g
+        //    orderby g.Sum(h => h.timesListened) descending
+        //    select new SongModel
+        //    {
+        //        songId = g.Key,
+        //        songname = songs.First(s => s.songId == g.Key).songname,
+        //        artist = songs.First(s => s.songId == g.Key).artist,
+                
+        //    }
+        //).FirstOrDefault();
+
+
         var mostplayed = from history in _context.history
                          group history by history.username into usergroup
+                         where usergroup.Any(x=>x.timesListened>0)
                          select new HistoryModel
                          {                             
-                             username = username,
+                             username = username,                             
                              timesListened = usergroup.Max(x => x.timesListened),
-                             songId=usergroup.OrderByDescending(x=>x.timesListened).Select(x=>x.songId).FirstOrDefault()
+                             songId=usergroup.OrderByDescending(x=>x.timesListened)
+                             .Select(x=>x.songId)
+                             .FirstOrDefault()
                              
                          };
-        List<SongModel> songs = _context.songs.ToList();
+
         var mostplayedsong = (from m in mostplayed.AsEnumerable()
                              join
                              s in songs on m.songId equals s.songId
-                             where m.username == username
+                             where m.username == username & m.timesListened>0
                              select new SongModel
                              {
                                  songId=s.songId,
@@ -145,6 +166,7 @@ public class SongService
                                  genre=s.genre,
                                  songfile=s.songfile
                              }).FirstOrDefault();
+        
 
         var tuple = (info,mostplayedsong);     
         return tuple;

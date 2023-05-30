@@ -160,9 +160,20 @@
             </div>
             <div class="statistics">
                 <div class="mostplayed " >
-                    <div>Your favorite song from all time</div>
-                    <h3>@Model.Item2.songname</h3>
-                    <h3>by @Model.Item2.artist</h3>
+                    @if (Model.Item2 != null)
+                    {
+                        <div>Your favorite song from all time</div>
+                        <h3>@Model.Item2.songname</h3>
+                        <h3>by @Model.Item2.artist</h3>
+                    }
+                    else
+                    {
+                        <div>Looks like you haven't discovered any songs</div>
+                        <h5>What mood are you in today?</h5>
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                            <span class="smalltext username ">Browse</span>
+                        </a>
+                    }
                 </div>
                 <div class="favorite-genre">
                     <div>The genre you have on repeat</div>
