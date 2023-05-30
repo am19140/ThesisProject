@@ -102,7 +102,7 @@
                         {
                             <img src="/Resources/icons8-male-user-96.png" />
                         }
-                        <div class="edit-btn icon">
+                        <div class="edit-btn icon smalltext">
                             <i class='bx bx-pencil icon' id="pencil"></i>
                         </div>
                     </div>
@@ -115,43 +115,43 @@
                 </div>
                 
                 <table class="smalltext">
-                    <tr><td class ="infoname"><h4>Username</h4></td></tr>
+                    <tr><td class ="infoname">Username</td></tr>
                     <tr>                        
                         <td class="infotext">
-                            <h4>@Model.Item1.username</h4>
+                            @Model.Item1.username
                         </td>
                     </tr>
                     <tr>
-                        <td class="infoname"><h4>First Name</h4></td>
+                        <td class="infoname">First Name</td>
                     </tr>
                     <tr>
                         <td class="infotext">
-                            <h4>@Model.Item1.firstname</h4>
+                            @Model.Item1.firstname
                         </td>
                     </tr>
                     <tr>
-                        <td class="infoname"><h4>Last Name</h4></td>
+                        <td class="infoname">Last Name</td>
 
                     </tr>
                     <tr>
                         <td class="infotext">
-                            <h4>@Model.Item1.lastname</h4>
+                            @Model.Item1.lastname
                         </td>
                     </tr>
                     <tr>
-                        <td class="infoname"><h4>Email address</h4></td>
+                        <td class="infoname">Email address</td>
                     </tr>
                     <tr>
                         <td class="infotext">
-                            <h4>@Model.Item1.email</h4>
+                            @Model.Item1.email
                         </td>
                     </tr>
                     <tr>
-                        <td class="infoname"><h4>Gender</h4></td>
+                        <td class="infoname">Gender</td>
                     </tr>
                     <tr>
                         <td class="infotext">
-                            <h4>@Model.Item1.gender</h4>
+                            @Model.Item1.gender
                         </td>
                     </tr>
                 </table>
@@ -159,9 +159,14 @@
                 
             </div>
             <div class="statistics">
-                <div class="mostplayed smalltext" >
-                    <h4>Your favorite song from all time</h4>
+                <div class="mostplayed " >
+                    <div>Your favorite song from all time</div>
                     <h3>@Model.Item2.songname</h3>
+                    <h3>by @Model.Item2.artist</h3>
+                </div>
+                <div class="favorite-genre">
+                    <div>The genre you have on repeat</div>
+                    <h3>@Model.Item2.genre</h3>
                 </div>
             </div>
         </div>

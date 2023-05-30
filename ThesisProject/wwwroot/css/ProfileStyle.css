@@ -89,7 +89,6 @@
 
 }
 .image-editor .icon{
-    color:var(--text-color);
     cursor:pointer;
 }
 .profile-img {
@@ -100,9 +99,7 @@
     justify-content: center;
     padding-top: 8%;
 }
-.profile-img .pencil{
 
-}
     .profile-img img {
         height:70px;
         width:70px;
@@ -117,6 +114,11 @@
         justify-content:center;
         text-align:center;
 
+    }
+    .image-editor .edit-btn{
+        height:100%;
+        display:flex;
+        align-items:end;
     }
 
     .image-editor form input[type="file"]::file-selector-button{
@@ -138,7 +140,7 @@
         }
 
         .image-editor form button:hover{
-            transform:res
+            transform:scale(1.07);
         }
         .information .infotext {
             font-size: 15px;
@@ -148,3 +150,35 @@
 .information .infoname{
     color:var(--sidebar-color);
 }
+
+.statistics{
+    display:flex;
+    flex-direction:column;
+    padding-right:2%;
+}
+    .statistics .mostplayed {
+        background-color: var(--green);
+        padding: 2%;
+        border-radius: 20px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        margin-bottom:1%;
+
+    }
+
+
+    .statistics .favorite-genre {
+        background-color: var(--yellow);
+        color: white;
+        padding: 2%;
+        border-radius: 20px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }

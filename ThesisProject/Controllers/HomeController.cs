@@ -145,10 +145,22 @@ namespace ThesisProject.Controllers
             }
             
         }
-        
+        public IActionResult Registration()
+        {
+            return View();
 
+        }
+        [HttpPost]
+        public IActionResult Registration(RegistrationModel registration)
+        {
+            if (ModelState.IsValid)
+            {
+                _songService.Registration(registration);
+                return View("Login");
 
-
+            }
+            else { return View("Registration"); }
+        }     
 
 
         [HttpPost]

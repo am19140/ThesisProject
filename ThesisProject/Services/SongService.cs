@@ -3,7 +3,6 @@ using ThesisProject.Context;
 using ThesisProject.Models;
 using System.Linq;
 
-
 public class SongService
 {
     private readonly DatabaseContext _context;
@@ -156,6 +155,24 @@ public class SongService
         var user = _context.users.FirstOrDefault(x => x.username == username);
         user.profileImage = path;
         _context.SaveChanges();
+
+    }
+
+    public void  Registration(RegistrationModel registration) {
+
+        var newuser = new UserModel
+        {
+            username = registration.username,
+            password = registration.password,
+            firstname = registration.firstname,
+            lastname = registration.lastname,
+            email = registration.email,
+            gender = registration.gender,
+            profileImage = registration.profileImage
+        };
+        _context.users.Add(newuser);
+        _context.SaveChanges();
+        
 
     }
   
