@@ -159,11 +159,12 @@
                 
             </div>
             <div class="statistics">
+                <h3 class="statistics-title"> <i class='bx bx-bar-chart-alt-2 icon'></i>Your Musification statistics</h3>
                 <div class="mostplayed " >
                     @if (Model.Item2 != null)
                     {
                         <div>Your favorite song from all time</div>
-                        <h3>@Model.Item2.songname</h3>
+                        <h3 class="song-title">@Model.Item2.songname</h3>
                         <h3>by @Model.Item2.artist</h3>
                     }
                     else
@@ -178,8 +179,10 @@
                 <div class="favorite-genre">
                     @if (Model.Item2 != null)
                     {
-                         <div>The genre you have on repeat</div>
-                        <h3>@Model.Item2.genre</h3>
+                         <div>Look like you are into...</div>
+                        <h3 class="genre-title"> @char.ToUpper(Model.Item2.genre[0])@Model.Item2.genre.Substring(1)</h3>
+                        <div>music</div>
+
                     }
                     else
                     {

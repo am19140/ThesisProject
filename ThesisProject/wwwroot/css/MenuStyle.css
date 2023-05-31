@@ -11,7 +11,7 @@
     /* ===== Colors ===== */
     --body-color: white;
     --sidebar-color: #FFF;
-    --primary-color: #f5c0e0;
+    --primary-color: #F7E1DF;
     --primary-color-light: #ecf7ff;
     --toggle-color: #DDD;
     --text-color: #707070;
@@ -212,20 +212,21 @@ body.dark .sidebar header .toggle {
     transition: var(--tran-03);
 }
 
-    .sidebar li .homebtn:hover {
-        background-color: var(--pink);
-
-    }
-    .sidebar li .favbtn:hover {
-        background-color: var(--light-blue);
-    }
-    .sidebar li .moodbtn:hover {
-        background-color: var(--yellow);
-    }.sidebar li .profbtn:hover {
-        background-color: var(--green);
-    }.sidebar li .logoutbtn:hover {
-        background-color: var(--light-pink);
-    }
+.sidebar li .homebtn:hover {
+    background-color: #F05C4B;
+}
+.sidebar li .favbtn:hover {
+    background-color: #C1E3FE;
+}
+.sidebar li .moodbtn:hover {
+    background-color: #F2C469;
+}
+.sidebar li .profbtn:hover {
+    background-color: #F2ECD9;
+}
+.sidebar li .logoutbtn:hover {
+    background-color: #D9E4C6;
+}
 
         .sidebar li a:hover .icon,
         .sidebar li a:hover .text {

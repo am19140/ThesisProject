@@ -95,16 +95,20 @@
                 <div class="left-container containers">
 
                 <form asp-controller="Home" asp-action="Playlists" method="post" class="left-form-up">                                           
-                    <input type="hidden" name="mood" value="happy" />                        
+                    <input type="hidden" name="mood" value="happy" />
+                    <img src="~/Resources/Enthusiastic-cuate.png" />
+
                     <input type="hidden" name ="username" value="@ViewBag.username"/>                        
                     <input type="submit" class="mood"   value="happy"  />
                     
                 </form>
                     
                 <form asp-controller="Home" asp-action="Playlists" method="post" class="left-form-down">
+                    <img src="~/Resources/Headphone-cuate.png" />
+                    <input type="hidden" name="mood" value="dance"/>
+                    <input type="hidden" name="username" value="@ViewBag.username" />
 
-                    <input type="hidden" name="mood" value="dance"/>                        
-                    <input type="submit" class="mood" value="dance" />
+                    <input type="submit" class="mood" value="dance" >
                     
                 </form>
                 </div>                
@@ -112,18 +116,22 @@
                     <div class="right-upper containers">
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="up1">
                         <input type="hidden" name="mood" value="sad" />
+                        <img src="~/Resources/Depression.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="sad" />
 
                     </form>
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="up2">
                         <input type="hidden" name="mood" value="chill" />
+                        <img src="~/Resources/Woman reading-cuate.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="chill" />
 
                     </form>
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="up3">
                         <input type="hidden" name="mood" value="heartbroken" />
+                        <img src="~/Resources/Anxiety-cuate.png" />
+
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="heartbroken" />
 
@@ -132,12 +140,15 @@
                     <div class="right-down containers">
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="down1">
                         <input type="hidden" name="mood" value="inlove" />
+                        <img src="~/Resources/Holding hands-cuate.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="inlove" />
 
                     </form>
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="down2">
-                        <input type="hidden" name="mood" value="sad" />
+                        <input type="hidden" name="mood" value="workout" />
+                        <img src="~/Resources/Jogging-cuate.png" />
+
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="workout" />
 

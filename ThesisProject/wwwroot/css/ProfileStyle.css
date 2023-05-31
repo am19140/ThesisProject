@@ -54,7 +54,7 @@
 }
 
     .main .information {
-        background-color: var(--primary-color);
+        background-color: #FAE4A6;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -156,8 +156,15 @@
     flex-direction:column;
     padding-right:2%;
 }
+    .statistics .statistics-title{
+        color:var(--text-color);
+        font-weight:500;
+        display:flex;
+        align-items:center;
+        padding-left:2%;
+    }
     .statistics .mostplayed {
-        background-color: var(--green);
+        background-color: #D9E4C6;
         padding: 2%;
         border-radius: 20px;
         color: white;
@@ -166,21 +173,28 @@
         align-items: center;
         flex-direction: column;
         height: 100%;
-        margin-bottom:1%;
+        margin-bottom: 1%;
+    }
+    .mostplayed .song-title{
+        font-size:30px;
 
     }
 
 
-    .statistics .favorite-genre {
-        background-color: var(--yellow);
-        color: white;
-        padding: 2%;
-        border-radius: 20px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+.statistics .favorite-genre {
+    background-color: #F7E1DF;
+    color: var(--text-color);
+    padding: 2%;
+    border-radius: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+    .statistics .genre-title{
+        font-size:45px;
     }
 
     .statistics .browse-btn{

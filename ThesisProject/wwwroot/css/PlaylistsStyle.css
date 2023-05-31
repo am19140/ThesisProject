@@ -3,8 +3,8 @@
     /* ===== Colors ===== */
     --body-color: #fff;
     --sidebar-color: #FFF;
-    --primary-color: #f5c0e0;
-    --primary-color-light: #F6F5FF;
+    --primary-color: #F7E1DF;
+    --primary-color-light: #FAE4A6;
     --toggle-color: #DDD;
     --text-color: #707070;
     --light-text-color: #white;
@@ -88,7 +88,6 @@ th:last-child {
     transform: scale(1.01);
     background-color: var(--primary-color-light);
     transition:var(--tran-05);
-    
 }
 
 .song-list .text{
@@ -97,7 +96,6 @@ th:last-child {
     padding:0;
 }
     .song:hover .text,.buttons{
-        color: black;
     }
 .song .play-icon {
     cursor: pointer;
