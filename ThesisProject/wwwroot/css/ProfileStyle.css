@@ -182,3 +182,16 @@
         align-items: center;
         flex-direction: column;
     }
+
+    .statistics .browse-btn{
+        text-decoration:none;
+        background-color:white;
+        padding:1%;
+        border-radius:20px;
+        margin-top:1%;
+        color:var(--text-color);
+        width:20%;        
+        text-align:center;
+    }
+
+ 

@@ -170,14 +170,25 @@
                     {
                         <div>Looks like you haven't discovered any songs</div>
                         <h5>What mood are you in today?</h5>
-                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
-                            <span class="smalltext username ">Browse</span>
+                        <a class="browse-btn green" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                            <span class="smalltext greenbrowse ">Browse</span>
                         </a>
                     }
                 </div>
                 <div class="favorite-genre">
-                    <div>The genre you have on repeat</div>
-                    <h3>@Model.Item2.genre</h3>
+                    @if (Model.Item2 != null)
+                    {
+                         <div>The genre you have on repeat</div>
+                        <h3>@Model.Item2.genre</h3>
+                    }
+                    else
+                    {
+                        <div>Looks like you haven't discovered any genres</div>
+                        <a class="browse-btn yellow" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                            <span class="smalltext yellowbrowse ">Browse</span>
+                        </a>
+                    }
+
                 </div>
             </div>
         </div>

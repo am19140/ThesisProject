@@ -122,26 +122,12 @@ public class SongService
     {
         var info = _context.users.FirstOrDefault(x=>x.username==username);
         List<SongModel> songs = _context.songs.ToList();
-
-        //var x = (
-        //    from h in _context.history
-        //    join s in songs on h.songId equals s.songId
-        //    where h.username == username && h.timesListened > 0
-        //    group h by h.songId into g
-        //    orderby g.Sum(h => h.timesListened) descending
-        //    select new SongModel
-        //    {
-        //        songId = g.Key,
-        //        songname = songs.First(s => s.songId == g.Key).songname,
-        //        artist = songs.First(s => s.songId == g.Key).artist,
-                
-        //    }
-        //).FirstOrDefault();
+        List<HistoryModel> history = new List<HistoryModel>();        
 
 
-        var mostplayed = from history in _context.history
-                         group history by history.username into usergroup
-                         where usergroup.Any(x=>x.timesListened>0)
+        var mostplayed = from h in _context.history
+                         group h by h.username into usergroup
+                         where usergroup.Any(x=>x.timesListened>0 && x.username==username)
                          select new HistoryModel
                          {                             
                              username = username,                             
