@@ -35,7 +35,8 @@ namespace ThesisProject.Controllers
         public IActionResult Homepage(string username) {
 
             ViewBag.username = username;
-
+            var model = _songService.getTopFive(username);
+            ViewBag.mymodel=model;
             return View();
         }
         public IActionResult Login()
@@ -182,6 +183,8 @@ namespace ThesisProject.Controllers
                 if (correct_pass == password)
                 {
                     ViewBag.Username = loginModel.username;
+                                var songModels=_songService.getTopFive(username);
+
                     return View("~/Views/Home/Homepage.cshtml", loginModel);
                 }
             }

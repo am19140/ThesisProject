@@ -25,10 +25,7 @@
         </header>
         <div class="menu-bar">
             <div class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
+               
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Homepage">
@@ -63,16 +60,7 @@
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+               
 
             </div>
         </div>
@@ -85,8 +73,9 @@
             <div class="text title">Your Profile</div>
             <div class="right-corner">
                 <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-
-                <div class="smalltext username ">@ViewBag.username </div>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                    <span class="smalltext username ">@ViewBag.username</span>
+                </a>
             </div>
         </div>
         <div class="main">
@@ -159,7 +148,7 @@
                 
             </div>
             <div class="statistics">
-                <h3 class="statistics-title"> <i class='bx bx-bar-chart-alt-2 icon'></i>Your Musification statistics</h3>
+                <h3 class="statistics-title">Musification statistics</h3>
                 <div class="mostplayed " >
                     @if (Model.Item2 != null)
                     {

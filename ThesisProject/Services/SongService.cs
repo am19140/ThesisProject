@@ -118,6 +118,50 @@ public class SongService
 
     }
 
+    public List<SongModel> getTopFive(string username)
+    {
+        List<SongModel> songs = _context.songs.ToList();
+        List<HistoryModel> history = _context.history.ToList();
+        var listened = (from h in history
+                       join s in songs on h.songId equals s.songId
+                       where h.username == username && h.timesListened>0
+                       orderby h.timesListened descending
+                       select new SongModel
+                       {                         
+                           songId=h.songId,
+                           songname=s.songname,
+                           artist=s.artist,
+                           duration=s.duration,
+                           mood=s.mood,
+                           genre=s.genre,
+                           songfile=s.songfile
+
+                       }).Take(5).ToList();
+
+        if(listened.Count < 5) {
+
+            var toplistened = (from h in history
+                               join s in songs on h.songId equals s.songId
+                               where h.username == username && h.timesListened > 0
+                               orderby h.timesListened descending
+                               select new SongModel
+                               {
+                                   songId = h.songId,
+                                   songname = s.songname,
+                                   artist = s.artist,
+                                   duration = s.duration,
+                                   mood = s.mood,
+                                   genre = s.genre,
+                                   songfile = s.songfile
+
+                               }).ToList();
+            return toplistened;
+        }
+        return listened;
+
+
+    }
+
     public  (UserModel,SongModel) getProfileInfo(string username)
     {
         var info = _context.users.FirstOrDefault(x=>x.username==username);

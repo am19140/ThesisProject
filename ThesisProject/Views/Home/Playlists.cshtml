@@ -87,7 +87,9 @@
             <div class="text title">Your @ViewBag.mood playlist</div>
             <div class="right-corner">
                 <img src="~/Resources/icons8-male-user-24 (1).png"/>
-                <div class="smalltext username ">@ViewBag.username </div>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                    <span class="smalltext username ">@ViewBag.username</span>
+                </a>
             </div>
         </div>
         <div class="main">
@@ -102,7 +104,7 @@
                         <thead>
                             <tr>
 
-                                <td></td>
+                                <td ></td>
                                 <td class="sname h  text">Song</td>
                                 <td class="artist h text">Artist</td>
                                 <td class="duration  h text">Duration</td>

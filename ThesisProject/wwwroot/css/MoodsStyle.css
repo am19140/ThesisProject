@@ -32,8 +32,12 @@
     font-size: 15px;
     display: flex;
     width: 150px;
-    justify-content: space-between;
+    justify-content: center;
 }
+    .right-corner img {
+        margin-right: 3%;
+    }
+
 .profbtn{
     text-decoration:none;
     color:var(--text-color);

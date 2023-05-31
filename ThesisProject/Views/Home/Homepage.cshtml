@@ -1,5 +1,4 @@
-﻿@model LoginModel
-
+﻿
 @section Styles{
     <link rel="stylesheet" href="~/css/HomepageStyle.css" />
     <link rel="stylesheet" href="~/css/MenuStyle.css" />
@@ -24,10 +23,7 @@
         </header>
         <div class="menu-bar">
             <div class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
+                
                 <ul class="menu-links">
                     <li class="nav-link">
                         <a class="homebtn" href="#">
@@ -62,16 +58,7 @@
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+             
 
             </div>
         </div>
@@ -84,11 +71,42 @@
             <div class="text title">Homepage</div>
             <div class="right-corner">
                 <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-                <div class="smalltext username ">@ViewBag.username </div>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                    <span class="smalltext username ">@ViewBag.username</span>
+                </a>
             </div>
         </div>
         <div class="main">
+            <div class="left">
 
+            </div>
+            <div class="right">
+                @if (ViewBag.mymodel != null)
+                {
+                    <div>
+                        <h3>Your last blasts</h3>
+                    </div>
+                    int i = 1;
+                    <table>
+                        <thead>
+                            <tr class="thead">
+                                <td>Songname</td>
+                                <td>Mood</td>
+                            </tr>
+                        </thead>
+                    @foreach (var song in ViewBag.mymodel as List<SongModel>)
+                    {
+                        <tr class="song">
+                            <td>@i. @song.songname</td>    
+                            <td>@song.mood</td>
+                        </tr>
+
+                            i++;
+                        }
+                    </table>
+                }
+                
+            </div>
         </div>            
        
     </section>
