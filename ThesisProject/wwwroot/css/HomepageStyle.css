@@ -49,27 +49,8 @@
     text-decoration: none;
     color: var(--text-color);
 }
-.song-managing{
-    position:absolute;
-    width:97%;
-    background-color:var(--primary-color-light);
-    bottom:0;
-    height:12%;
-    border-radius:20px;
-    margin-left:2%;
-    margin-bottom:1%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
 
-.buttons {
-    color: var(--text-color);
-    transition:var(--tran-03);
-    font-size: 40px;
-    display:flex;
-    flex-direction:row;
-}
+
 
 .buttons i{
     cursor:pointer;
@@ -82,30 +63,107 @@
 
 .main{
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
     width:100%;
     height:100%;
     padding-left:6%;
     padding-right:6%;
     margin-bottom:2%;
 }
+.down{
+    height:70%;
+    width:100%;
+    display:flex;
+    flex-direction:row;
 
+}
     .main .left{
         width:100%;
         height:100%;
+        display:flex;
+        flex-direction:row;
+        margin-bottom:2%;
+
+    }
+    .main .welcome{
+        height:100%;
+        width:100%;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        margin-right:1%;
+        justify-content:end;
+    }
+     video{
+        width:auto;
+        height:90%;
+    }
+.main .down-text {
+   
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.decoration {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+    background-color: #F2C469;
+    border-radius: 20px;
+    justify-content:space-evenly
+}
+
+.decoration h2{
+    color:white;
+
+}
+.decoration .you {
+    color: black;
+}
+.decoration h3{
+    color:white;
+}
+
+        .main .left .welcome-msg {
+            padding: 1%;
+            font-size: 25px;
+            font-weight: 500;
+            color: var(--text-color); 
+            text-align:end;
+            width:100%;
+        }
+
+    .main .left img{
+        height:30px;
+        width:30px;
         
     }
     .main .right {
         width: 100%;
+
         background-color: #F7E1DF;
         border-radius:20px;
-        padding:4%;
+        padding:4%;        
     }
 
-    .right table{
+.top {
+    color: #EB9481;
+}
+
+.song-title {
+    font-weight: bold;
+}
+
+    table{
         width:100%;
+        height:90%;
     }
 
         .right tr{
             padding:2%;
         }
+
+

@@ -37,7 +37,9 @@ namespace ThesisProject.Controllers
             ViewBag.username = username;
             var model = _songService.getTopFive(username);
             ViewBag.mymodel=model;
-            return View();
+            LoginModel login = null;
+            var tuple = (model, login);
+            return View("Homepage",tuple);
         }
         public IActionResult Login()
         {
@@ -183,9 +185,10 @@ namespace ThesisProject.Controllers
                 if (correct_pass == password)
                 {
                     ViewBag.Username = loginModel.username;
-                                var songModels=_songService.getTopFive(username);
+                    var songModels=_songService.getTopFive(username);
+                    var model = (songModels,loginModel);
 
-                    return View("~/Views/Home/Homepage.cshtml", loginModel);
+                    return View("~/Views/Home/Homepage.cshtml", model);
                 }
             }
             loginModel.isLoginConfirmed = false;

@@ -14,7 +14,7 @@ public class SongService
     }
     public List<(SongModel songmodel,bool isLiked)> getSongList(string username,string mood)
     {
-        var songs = _context.songs.Where(x=>x.mood==mood).ToList();
+        var songs = _context.songs.Where(x=>x.mood==mood).OrderBy(x=>x.songname).ToList();
         List<(SongModel songmodel,bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
         foreach (var song in songs)
         {
@@ -30,6 +30,7 @@ public class SongService
         var songs =(from l in _context.likes join 
                     s in _context.songs on l.songId equals s.songId
                     where l.username==username
+                    orderby l.id
                     select s).ToList();
                 
         return songs;
