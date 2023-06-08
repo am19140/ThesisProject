@@ -213,7 +213,7 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar li .homebtn:hover {
-    background-color: #F05C4B;
+    background-color: #EB9481;
 }
 .sidebar li .favbtn:hover {
     background-color: #C1E3FE;
@@ -225,7 +225,7 @@ body.dark .sidebar header .toggle {
     background-color: #F2ECD9;
 }
 .sidebar li .logoutbtn:hover {
-    background-color: #D9E4C6;
+    background-color: #F7E1DF;
 }
 
         .sidebar li a:hover .icon,

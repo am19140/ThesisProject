@@ -121,7 +121,7 @@
 
 }
 .decoration .you {
-    color: black;
+    color: var(--text-color);
 }
 .decoration h3{
     color:white;
@@ -129,7 +129,7 @@
 
         .main .left .welcome-msg {
             padding: 1%;
-            font-size: 25px;
+            font-size: 38px;
             font-weight: 500;
             color: var(--text-color); 
             text-align:end;

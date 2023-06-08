@@ -65,7 +65,7 @@ h1{
     flex: 2;
     align-items:center;
     justify-content:center;
-    background-image: url('/Images/pink-shape.png');
+    background-image: url('/Images/beige-shape.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -78,30 +78,30 @@ h1{
     order:2;
 }
 
-.input:focus{
-    outline-color:var(--light-blue);
-    transition:0.3s ;
-}
+    .input:focus {
+        outline-color: #F2C469;
+        transition: 0.3s;
+    }
 .inputs{
     width:100%;
     display:flex;
 justify-content:center}
 
-.submit-btn{
-    margin-top:2%;
-    width:30%;
-    padding:1.5%;
-    border-radius:15px;
-    transition:all 0.3s;
-    background-color:#c1e3fe;
-    border:none;
-    font-size:15px;
-
+.submit-btn {
+    margin-top: 2%;
+    width: 30%;
+    padding: 1.5%;
+    border-radius: 15px;
+    transition: all 0.3s;
+    background-color: #F7E1DF;
+    border: none;
+    font-size: 15px;
 }
     .submit-btn:hover {
         transform: scale(1.05);
         cursor: pointer;
-        transition:var(--tran-04);
+        transition: var(--tran-04);
+        background-color: #F3C5BC;
     }
 
 .register{
@@ -114,11 +114,11 @@ justify-content:center}
 h4{
     margin-top:10%;
 }
-h5{
-    color:var(--light-pink);
-    cursor:pointer;
-    font-weight:400;
-    font-size:15px;
+h5 {
+    color: #F3C5BC;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 15px;
 }
 
 .radios {
@@ -130,12 +130,13 @@ h5{
 }
 .signin{
     text-decoration:none;
+
 }
 
-.signin:hover h5{
-    color:var(--light-blue);
-    transition:var(--tran-04);
-}
+    .signin:hover h5 {
+        color: #F7E1DF;
+        transition: var(--tran-03);
+    }
 
 
 .error{
