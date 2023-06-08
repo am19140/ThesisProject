@@ -228,6 +228,28 @@ public class SongService
         
 
     }
+
+    public bool Login(string username, string password)
+    {
+        var authentication = _context.users.FirstOrDefault(x => x.username == username && x.password == password);
+        if (authentication != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public string GetProfilePicture(string username)
+    {
+        var file = (from u in _context.users
+                   where u.username == username
+                   select u.profileImage).FirstOrDefault();
+
+        return file;
+    }
   
 
 

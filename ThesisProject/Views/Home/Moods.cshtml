@@ -28,13 +28,13 @@
                
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Homepage">
+                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Homepage">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Homepage</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile" asp-route-profile="@ViewBag.ProfileImage">
                             <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
@@ -72,8 +72,8 @@
         <div class="header">
             <div class="text title">Moods</div>
             <div class="right-corner">
-                <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">                    
+                <img class="profile-pic" src="@ViewBag.ProfileImage"></img>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile" asp-route-profile="@ViewBag.ProfileImage">
                     <span class="smalltext username ">@ViewBag.username</span>
                 </a>
             </div>
@@ -86,8 +86,9 @@
                     <input type="hidden" name="mood" value="happy" />
                     <img src="~/Resources/Enthusiastic-cuate.png" />
 
-                    <input type="hidden" name ="username" value="@ViewBag.username"/>                        
-                    <input type="submit" class="mood"   value="happy"  />
+                    <input type="hidden" name ="username" value="@ViewBag.username"/>
+                    <input type="hidden" name="profile" value="@ViewBag.profile" />
+                    <input type="submit" class="mood" value="happy" />
                     
                 </form>
                     
@@ -95,6 +96,7 @@
                     <img src="~/Resources/Headphone-cuate.png" />
                     <input type="hidden" name="mood" value="dance"/>
                     <input type="hidden" name="username" value="@ViewBag.username" />
+                    <input type="hidden" name="profile" value="@ViewBag.profile" />
 
                     <input type="submit" class="mood" value="dance" >
                     
@@ -106,6 +108,8 @@
                         <input type="hidden" name="mood" value="sad" />
                         <img src="~/Resources/Depression.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+
                         <input type="submit" class="mood" value="sad" />
 
                     </form>
@@ -113,12 +117,15 @@
                         <input type="hidden" name="mood" value="chill" />
                         <img src="~/Resources/Woman reading-cuate.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+
                         <input type="submit" class="mood" value="chill" />
 
                     </form>
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="up3">
                         <input type="hidden" name="mood" value="heartbroken" />
                         <img src="~/Resources/Anxiety-cuate.png" />
+                        <input type="hidden" name="profile" value="@ViewBag.profile" />
 
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="heartbroken" />
@@ -130,13 +137,15 @@
                         <input type="hidden" name="mood" value="inlove" />
                         <img src="~/Resources/Holding hands-cuate.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+
                         <input type="submit" class="mood" value="inlove" />
 
                     </form>
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="down2">
                         <input type="hidden" name="mood" value="workout" />
                         <img src="~/Resources/Jogging-cuate.png" />
-
+                        <input type="hidden" name="profile" value="@ViewBag.profile" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="workout" />
 

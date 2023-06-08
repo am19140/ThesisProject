@@ -33,19 +33,19 @@
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
                             <i class='bx bx-happy-alt icon'></i>
                             <span class="text nav-text">Moods</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
                             <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
@@ -71,8 +71,8 @@
         <div class="header">
             <div class="text title">Homepage</div>
             <div class="right-corner">
-                <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                <img class="profile-pic" src="@ViewBag.ProfileImage"></img>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
                     <span class="smalltext username ">@ViewBag.username</span>
                 </a>
             </div>
@@ -82,7 +82,10 @@
                 <div class="welcome">
                     
                     <h2 class="welcome-msg">
-                        We are so happy you're back
+                        We are so happy 
+                    </h2>
+                    <h2 class="welcome-msg">
+                        you're back
                         <img src="~/Images/Waving Hand Emoji.png" />
                     </h2>
                 </div> 

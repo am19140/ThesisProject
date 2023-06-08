@@ -29,25 +29,25 @@
                 
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Homepage">
+                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Homepage">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Homepage</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
                             <i class='bx bx-happy-alt icon'></i>
                             <span class="text nav-text">Moods</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
                             <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
@@ -73,8 +73,8 @@
         <div class="header">
             <div class="text title">Your favorites</div>
             <div class="right-corner">
-                <img src="~/Resources/icons8-male-user-24 (1).png" />
-                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                <img class="profile-pic" src="@ViewBag.ProfileImage"></img>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
                     <span class="smalltext username ">@ViewBag.username</span>
                 </a>
             </div>
@@ -104,7 +104,7 @@
                             <tr class="song">
                                 <td>
                                     <span class="play-icon ">
-                                        <button type="submit" data-song-id="@item.songId" data-username="@ViewBag.username" data-file="@item.songfile" class="play-btn">
+                                        <button type="submit" data-song-id="@item.songId" data-username="@ViewBag.username" data-profile="@ViewBag.ProfileImage" data-file="@item.songfile" class="play-btn">
                                             <i class='bx bx-play bx-flip-vertical buttons icon ' style="display:inline-block"></i>
                                             <i class='bx bx-pause buttons icon' style="display:none"></i>
                                         </button>
@@ -115,7 +115,7 @@
                                 <td class="artist text">@item.artist</td>
                                 <td class="duration text">@item.duration</td>                                                               
                                 <td>
-                                        <form asp-controller="Home" asp-action="Unlike" asp-route-username="@ViewBag.Username" method="post" class="like-btn">
+                                    <form asp-controller="Home" asp-action="Unlike" asp-route-username="@ViewBag.Username" asp-route-profile="@ViewBag.ProfileImage" method="post" class="like-btn">
                                             <input type="hidden" name="username" value="@ViewBag.username" />
                                             <input type="hidden" name="mood" value="@item.mood" />
                                             <input type="hidden" name="songid" value="@item.songId" />

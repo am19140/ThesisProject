@@ -27,31 +27,28 @@
         </header>
         <div class="menu-bar">
             <div class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
-                </li>
+               
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Homepage">
+                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Homepage">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Homepage</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods" asp-route-profile="@ViewBag.ProfileImage">
                             <i class='bx bx-happy-alt icon'></i>
                             <span class="text nav-text">Moods</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile" asp-route-profile="@ViewBag.ProfileImage">
                             <i class='bx bx-male icon'></i>
                             <span class="text nav-text">Profile</span>
                         </a>
@@ -65,16 +62,7 @@
                         <span class="text nav-text">Logout</span>
                     </a>
                 </li>
-                <li class="mode">
-                    <div class="sun-moon">
-                        <i class='bx bx-moon icon moon'></i>
-                        <i class='bx bx-sun icon sun'></i>
-                    </div>
-                    <span class="mode-text text">Dark mode</span>
-                    <div class="toggle-switch">
-                        <span class="switch"></span>
-                    </div>
-                </li>
+               
 
             </div>
         </div>
@@ -86,8 +74,8 @@
         <div class="header">
             <div class="text title">Your @ViewBag.mood playlist</div>
             <div class="right-corner">
-                <img src="~/Resources/icons8-male-user-24 (1).png"/>
-                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                <img class="profile-pic" src="@ViewBag.ProfileImage"></img>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile" asp-route-profile="@ViewBag.ProfileImage">
                     <span class="smalltext username ">@ViewBag.username</span>
                 </a>
             </div>
@@ -119,13 +107,11 @@
                                 
                                 <td>     
                                     <span class="play-icon ">                                            
-                                        <button type="submit" data-song-id="@item.Song.songId" data-username="@ViewBag.username" data-file="@item.Song.songfile" class="play-btn">                                                
+                                        <button type="submit" data-song-id="@item.Song.songId" data-username="@ViewBag.username" data-profile="@ViewBag.ProfileImage" data-file="@item.Song.songfile" class="play-btn">                                                
                                             <i class='bx bx-play bx-flip-vertical buttons' style="display:inline-block"></i>                                                
                                             <i class='bx bx-pause buttons' style="display:none"></i>                                            
-                                        </button>
-                                        
-                                    </span>
-                                  
+                                        </button>                                        
+                                    </span>                                  
                                     
                                 </td>
 
@@ -150,7 +136,7 @@
                                 else
                                 {
                                     <td>
-                                        <form asp-controller="Home" asp-action="LikeUnlike" asp-route-username="@ViewBag.Username" method="post" class="like-btn">
+                                        <form asp-controller="Home" asp-action="LikeUnlike" asp-route-username="@ViewBag.Username" asp-route-profile="@ViewBag.ProfileImage" method="post" class="like-btn">
                                             <input type="hidden" name="username" value="@ViewBag.username" />
                                             <input type="hidden" name="mood" value="@item.Song.mood" />
                                             <input type="hidden" name="songid" value="@item.Song.songId" />

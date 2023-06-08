@@ -28,19 +28,19 @@
                
                 <ul class="menu-links">
                     <li class="nav-link">
-                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Homepage">
+                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Homepage">
                             <i class='bx bx-home-alt icon'></i>
                             <span class="text nav-text">Homepage</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Favorites">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Favorites">
                             <i class='bx bx-heart icon'></i>
                             <span class="text nav-text">Favorites</span>
                         </a>
                     </li>
                     <li class="nav-link">
-                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
                             <i class='bx bx-happy-alt icon'></i>
                             <span class="text nav-text">Moods</span>
                         </a>
@@ -72,8 +72,8 @@
         <div class="header">
             <div class="text title">Your Profile</div>
             <div class="right-corner">
-                <img src="~/Resources/icons8-male-user-24 (1).png"></img>
-                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Profile">
+                <img class="profile-pic" src="@ViewBag.ProfileImage"></img>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
                     <span class="smalltext username ">@ViewBag.username</span>
                 </a>
             </div>
@@ -160,7 +160,7 @@
                     {
                         <div>Looks like you haven't discovered any songs</div>
                         <h5>What mood are you in today?</h5>
-                        <a class="browse-btn green" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                        <a class="browse-btn green" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
                             <span class="smalltext greenbrowse ">Browse</span>
                         </a>
                     }
@@ -176,7 +176,7 @@
                     else
                     {
                         <div>Looks like you haven't discovered any genres</div>
-                        <a class="browse-btn yellow" asp-controller="Home" asp-route-username="@ViewBag.username" asp-action="Moods">
+                        <a class="browse-btn yellow" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
                             <span class="smalltext yellowbrowse ">Browse</span>
                         </a>
                     }

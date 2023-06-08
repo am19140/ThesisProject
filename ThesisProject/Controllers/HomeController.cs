@@ -32,9 +32,10 @@ namespace ThesisProject.Controllers
             return View();
         }
         
-        public IActionResult Homepage(string username) {
+        public IActionResult Homepage(string username,string profile) {
 
             ViewBag.username = username;
+            ViewBag.ProfileImage=profile;
             var model = _songService.getTopFive(username);
             ViewBag.mymodel=model;
             LoginModel login = null;
@@ -47,34 +48,39 @@ namespace ThesisProject.Controllers
         }
 
            
-         public IActionResult Moods(string username) {
+         public IActionResult Moods(string username,string profile) {
+
+            ViewBag.ProfileImage = profile;
 
             ViewBag.username = username;
             return View();
 
            
         }
-        public IActionResult Playlists(string mood,string username) {
+        public IActionResult Playlists(string mood,string username,string profile) {
 
             var SongModel = _songService.getSongList(username,mood);
             ViewBag.mood = mood;
             ViewBag.username = username;
+            ViewBag.ProfileImage = profile;
             return View("Playlists",SongModel);           
            
         }
 
-        public IActionResult Favorites(string username) {
+        public IActionResult Favorites(string username,string profile) {
             ViewBag.username=username;
+            ViewBag.ProfileImage = profile;
             var model = _songService.getLikedSongs(username);
             return View("Favorites",model);
 
         }
 
         [HttpPost]
-        public IActionResult LikeUnlike(string username,string mood,int songid,bool isLiked )
+        public IActionResult LikeUnlike(string username,string mood,int songid,bool isLiked ,string profile)
         {
             ViewBag.username = username;
-            ViewBag.mood = mood;
+            ViewBag.mood = mood; 
+            ViewBag.ProfileImage = profile;
             ViewBag.songid = songid;
             ViewBag.isLiked = isLiked;
             var SongModel = _songService.Like(username, mood,songid,isLiked);
@@ -83,21 +89,25 @@ namespace ThesisProject.Controllers
         }
 
         [HttpPost]
-        public IActionResult Unlike(string username,string mood,int songid,bool isLiked )
+        public IActionResult Unlike(string username,string mood,int songid,bool isLiked , string profile)
         {
             ViewBag.username = username;
             ViewBag.mood = mood;
             ViewBag.songid = songid;
+            ViewBag.ProfileImage = profile;
+
             ViewBag.isLiked = isLiked;
             var SongModel = _songService.UnLike(username, mood,songid,isLiked);            
             return View("Favorites",SongModel);
         }
 
         [HttpPost]
-        public IActionResult HearingCounter(string username,int songid, string mood) 
+        public IActionResult HearingCounter(string username,int songid, string mood,string profile) 
         { 
             ViewBag.username = username;
             ViewBag.songid=songid;
+            ViewBag.ProfileImage = profile;
+
             _songService.Counter(username, songid);
             var SongModel = _songService.getSongList(username, mood);
             return Json( SongModel);
@@ -106,10 +116,11 @@ namespace ThesisProject.Controllers
 
 
         [HttpPost]
-        public IActionResult LikedHearingCounter(string username, int songid)
+        public IActionResult LikedHearingCounter(string username, int songid, string profile)
         {
             ViewBag.username = username;
             ViewBag.songid = songid;
+            ViewBag.ProfileImage = profile;
             _songService.Counter(username, songid);
             var SongModel = _songService.getLikedSongs(username);
             return Json(SongModel);
@@ -117,18 +128,21 @@ namespace ThesisProject.Controllers
         }
 
 
-        public IActionResult Profile(string username) {
+        public IActionResult Profile(string username, string profile) {
 
             ViewBag.username = username;
+            ViewBag.ProfileImage = profile;
             var profileinfo = _songService.getProfileInfo(username);
             return View("Profile",profileinfo);
            
         }
 
         [HttpPost]
-        public ActionResult Upload(IFormFile file,string username)
+        public ActionResult Upload(IFormFile file,string username,string profile)
         {
             ViewBag.username = username;
+            ViewBag.ProfileImage = profile;
+
             if (file != null) {
 
                 string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Resources", file.FileName);
@@ -174,25 +188,21 @@ namespace ThesisProject.Controllers
             string username = loginModel.username;
             var password = loginModel.password;
 
-            NpgsqlConnection connection = Database.Database.Connection();
-            DatabaseContext databaseContext = new DatabaseContext();
-            NpgsqlDataReader output = Database.Database.ExecuteQuery(string.Format("select *" +
-                " from users where username ='{0}'",username), connection);
-            if (output.Read())
+            var authentication = _songService.Login(username, password);
+            if (authentication)
             {
-                string correct_pass = output.GetString(1);
-                connection.Close();
-                if (correct_pass == password)
-                {
-                    ViewBag.Username = loginModel.username;
-                    var songModels=_songService.getTopFive(username);
-                    var model = (songModels,loginModel);
-
-                    return View("~/Views/Home/Homepage.cshtml", model);
-                }
+                ViewBag.Username = loginModel.username;
+                ViewBag.ProfileImage = _songService.GetProfilePicture(username);
+                var songModels = _songService.getTopFive(username);
+                var model = (songModels, loginModel);
+                return View("~/Views/Home/Homepage.cshtml", model);
             }
-            loginModel.isLoginConfirmed = false;
-            return View("Login", loginModel);
+            else
+            {
+                loginModel.isLoginConfirmed = false;
+                return View("Login", loginModel);
+            }
+            
 
         }
 

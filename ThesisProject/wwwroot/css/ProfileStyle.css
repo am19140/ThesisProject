@@ -38,9 +38,7 @@
     width: 150px;
     justify-content: space-between;
 }
-    .right-corner img {
-        margin-right: 3%;
-    }
+   
 .profbtn {
     text-decoration: none;
     color: var(--text-color);
