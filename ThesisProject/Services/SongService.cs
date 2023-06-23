@@ -163,7 +163,7 @@ public class SongService
 
     }
 
-    public  (UserModel,SongModel) getProfileInfo(string username)
+    public  (UserModel,SongModel,Genre,Artist,Mood) getProfileInfo(string username)
     {
         var info = _context.users.FirstOrDefault(x=>x.username==username);
         List<SongModel> songs = _context.songs.ToList();
@@ -197,9 +197,39 @@ public class SongService
                                  genre=s.genre,
                                  songfile=s.songfile
                              }).FirstOrDefault();
-        
 
-        var tuple = (info,mostplayedsong);     
+        var listened = (from h in _context.history.ToList()
+                        join s in songs on h.songId equals s.songId
+                        where h.username == username && h.timesListened > 0
+                        orderby h.timesListened descending
+                        select new SongModel
+                        {
+                            songId = h.songId,
+                            songname = s.songname,
+                            artist = s.artist,
+                            duration = s.duration,
+                            mood = s.mood,
+                            genre = s.genre,
+                            songfile = s.songfile
+
+                        }).ToList();
+
+        var most_frequent1 = listened.GroupBy(h => h.GetType().GetProperty("genre").GetValue(h))
+            .Select(g=>new Genre {genre=g.Key.ToString(),count=g.Count()});
+
+        var most_freq_genre = most_frequent1.OrderByDescending(x => x.count).FirstOrDefault();
+
+        var most_frequent2 = listened.GroupBy(h => h.GetType().GetProperty("artist").GetValue(h))
+            .Select(g => new Artist { artist = g.Key.ToString(), count = g.Count() });
+
+        var most_freq_artist = most_frequent2.OrderByDescending(x=>x.count).FirstOrDefault();
+
+        var most_frequent3 = listened.GroupBy(h => h.GetType().GetProperty("mood").GetValue(h))
+            .Select(g => new Mood { mood = g.Key.ToString(), count = g.Count() });
+
+        var most_freq_mood= most_frequent3.OrderByDescending(x => x.count).FirstOrDefault();
+
+        var tuple = (info,mostplayedsong,most_freq_genre,most_freq_artist,most_freq_mood);     
         return tuple;
     }
 

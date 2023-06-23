@@ -87,7 +87,7 @@
                     <img src="~/Resources/Enthusiastic-cuate.png" />
 
                     <input type="hidden" name ="username" value="@ViewBag.username"/>
-                    <input type="hidden" name="profile" value="@ViewBag.profile" />
+                    <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
                     <input type="submit" class="mood" value="happy" />
                     
                 </form>
@@ -96,7 +96,7 @@
                     <img src="~/Resources/Headphone-cuate.png" />
                     <input type="hidden" name="mood" value="dance"/>
                     <input type="hidden" name="username" value="@ViewBag.username" />
-                    <input type="hidden" name="profile" value="@ViewBag.profile" />
+                    <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
 
                     <input type="submit" class="mood" value="dance" >
                     
@@ -107,8 +107,9 @@
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="up1">
                         <input type="hidden" name="mood" value="sad" />
                         <img src="~/Resources/Depression.png" />
+                        
                         <input type="hidden" name="username" value="@ViewBag.username" />
-                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+                        <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
 
                         <input type="submit" class="mood" value="sad" />
 
@@ -117,7 +118,7 @@
                         <input type="hidden" name="mood" value="chill" />
                         <img src="~/Resources/Woman reading-cuate.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
-                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+                        <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
 
                         <input type="submit" class="mood" value="chill" />
 
@@ -125,7 +126,7 @@
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="up3">
                         <input type="hidden" name="mood" value="heartbroken" />
                         <img src="~/Resources/Anxiety-cuate.png" />
-                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+                        <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
 
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="heartbroken" />
@@ -137,7 +138,7 @@
                         <input type="hidden" name="mood" value="inlove" />
                         <img src="~/Resources/Holding hands-cuate.png" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
-                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+                        <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
 
                         <input type="submit" class="mood" value="inlove" />
 
@@ -145,7 +146,7 @@
                     <form asp-controller="Home" asp-action="Playlists" method="post" class="down2">
                         <input type="hidden" name="mood" value="workout" />
                         <img src="~/Resources/Jogging-cuate.png" />
-                        <input type="hidden" name="profile" value="@ViewBag.profile" />
+                        <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="submit" class="mood" value="workout" />
 
@@ -168,7 +169,7 @@
 
     </section>
 
-    
+   
     <!--Javascripts-->
     <script>
         function Hide(){

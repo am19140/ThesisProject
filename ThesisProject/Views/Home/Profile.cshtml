@@ -1,4 +1,4 @@
-﻿@model (UserModel,SongModel)
+﻿@model (UserModel,SongModel,Genre,Artist,Mood)
 
 @section Styles{
     <link rel="stylesheet" href="~/css/ProfileStyle.css" />
@@ -85,7 +85,7 @@
                     <div class="profile-img">
                         @if (!string.IsNullOrEmpty(Model.Item1.profileImage))
                         {
-                           <img class="profile-pic" src="@Url.Content(Model.Item1.profileImage)" />
+                           <img class="profile-picture" src="@Url.Content(Model.Item1.profileImage)" />
                         }
                         else
                         {
@@ -148,40 +148,74 @@
                 
             </div>
             <div class="statistics">
-                <h3 class="statistics-title">Musification statistics</h3>
+                <h2 class="statistics-title">Breef Overview</h2>
                 <div class="mostplayed " >
-                    @if (Model.Item2 != null)
-                    {
-                        <div>Your favorite song from all time</div>
-                        <h3 class="song-title">@Model.Item2.songname</h3>
-                        <h3>by @Model.Item2.artist</h3>
-                    }
-                    else
-                    {
-                        <div>Looks like you haven't discovered any songs</div>
-                        <h5>What mood are you in today?</h5>
-                        <a class="browse-btn green" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
-                            <span class="smalltext greenbrowse ">Browse</span>
-                        </a>
-                    }
-                </div>
-                <div class="favorite-genre">
-                    @if (Model.Item2 != null)
-                    {
-                         <div>Look like you are into...</div>
-                        <h3 class="genre-title"> @char.ToUpper(Model.Item2.genre[0])@Model.Item2.genre.Substring(1)</h3>
-                        <div>music</div>
+                    
+                        @if (Model.Item2 != null)
+                        {
+                            <div class="text1">
+                                <div>You have been listening to</div>
+                                <h3 class="song-title">@Model.Item2.songname</h3>
+                                <h3>by @Model.Item2.artist</h3>
+                            <div>everywhere you've been</div>
 
-                    }
-                    else
-                    {
-                        <div>Looks like you haven't discovered any genres</div>
-                        <a class="browse-btn yellow" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
-                            <span class="smalltext yellowbrowse ">Browse</span>
-                        </a>
-                    }
+                            </div>
+                            
+                            <div class="img">
+                                <img src="~/Resources/Modern life-cuate.png" />
 
+                            </div>
+                        }
+                        else
+                        {
+                            <div>Looks like you haven't discovered any songs</div>
+                            <h5>What mood are you in today?</h5>
+                            <a class="browse-btn green" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
+                                <span class="smalltext greenbrowse ">Browse</span>
+                            </a>
+                        }
+                   
+                    
+                   
                 </div>
+                <div class="bottom-container">
+                    <div class="favorite-genre">
+                        @if (Model.Item2 != null)
+                        {                            
+                            <h3 class="genre-title">
+                                <i class='bx bx-music'></i>
+                               </h3>
+
+                            <div>You usually jam to</div>
+                            <h3 class="genre-title"> @char.ToUpper(Model.Item3.genre[0])@Model.Item3.genre.Substring(1)</h3>
+                            <div>music</div>
+
+                        }
+                        else
+                        {
+                            <div>Looks like you haven't discovered any genres</div>
+                            <a class="browse-btn yellow" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
+                                <span class="smalltext yellowbrowse ">Browse</span>
+                            </a>
+                        }
+
+                    </div>
+
+                    <div class="favorite-artist">
+                        <h3 class="artist-name"><i class='bx bx-repeat'></i></h3>
+                        <div>The artist you have on repeat is...</div>
+                        <h3 class="artist-name">@Model.Item4.artist</h3>
+                    </div>
+
+                    <div class="favorite-mood">
+                        <h3 class="artist-name"><i class='bx bx-refresh'></i></h3>
+                        <div>You usually enjoy the</div>
+                        <h3 class="artist-name"> @char.ToUpper(Model.Item5.mood[0])@Model.Item5.mood.Substring(1)</h3>
+                        <div>playlist</div>
+
+                    </div>
+                </div>
+              
             </div>
         </div>
 
