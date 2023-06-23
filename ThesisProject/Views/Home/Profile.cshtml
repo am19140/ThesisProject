@@ -72,7 +72,7 @@
         <div class="header">
             <div class="text title">Your Profile</div>
             <div class="right-corner">
-                <img class="profile-pic" src="@ViewBag.ProfileImage"></img>
+                <img class="profile-pic" src="@Model.Item1.profileImage"></img>
                 <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
                     <span class="smalltext username ">@ViewBag.username</span>
                 </a>
@@ -98,6 +98,8 @@
                     <form style ="display:none;" asp-controller="Home" enctype="multipart/form-data" asp-action="Upload" method="post" id="fileUploadForm">
                         <input type="hidden" name="username" value="@ViewBag.username" />
                         <input type="file" name="file" id="ImageData"  />
+                        <input type="hidden" name="profile" value="@Model.Item1.profileImage" />
+
                         <button type="submit">Save Changes</button>
 
                     </form>

@@ -53,7 +53,7 @@
                 </ul>
             </div>
             <div class="bottom-content">
-                <li class="">
+                <li >
                     <a class="logoutbtn" asp-controller="Home" asp-action="Login">
                         <i class='bx bx-log-out icon'></i>
                         <span class="text nav-text">Logout</span>
@@ -82,12 +82,12 @@
                 <div class="welcome">
                     
                     <h2 class="welcome-msg">
-                        We are so happy 
-                    </h2>
-                    <h2 class="welcome-msg">
-                        you're back
                         <img src="~/Images/Waving Hand Emoji.png" />
+                        Welcome to a
                     </h2>
+                    <h1 class="welcome-msg1">
+                        new music world
+                    </h1>
                 </div> 
                 <div class="right">
                     @if (Model.Item1 != null)
@@ -106,7 +106,7 @@
                                         string mood = song.mood.Substring(0, 1).ToUpper() + song.mood.Substring(1);
                                     }
 
-                                    <td style="text-align:center">@mood mood</td>
+                                    <td style="text-align:center">@mood </td>
                                 </tr>
 
                                 i++;
@@ -120,14 +120,63 @@
                 <div class="decoration">
                     <div class="down-text">
                         <h2>What mood are you in today?</h2>
-                    <h3><span class="you">You</span> choose</h3>
+                    <div class="suggestions">
+                        <div class="suggestion">
+                            <form asp-controller="Home" asp-action="Playlists" method="post" class="left-form-up">
+                                <input type="hidden" name="mood" value="happy" />
+                                <input type="hidden" name="username" value="@ViewBag.username" />
+                                <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
+                                <input type="submit" class="mood" value="happy" />
+
+                            </form>
+                        </div>
+                        <div class="suggestion">
+                            <form asp-controller="Home" asp-action="Playlists" method="post" class="left-form-down">
+                                <input type="hidden" name="mood" value="dance" />
+                                <input type="hidden" name="username" value="@ViewBag.username" />
+                                <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
+
+                                <input type="submit" class="mood" value="dance">
+
+                            </form>
+                        </div>
+
+                        <div class="suggestion">
+                            <form asp-controller="Home" asp-action="Playlists" method="post" class="down1">
+                                <input type="hidden" name="mood" value="inlove" />
+                                <input type="hidden" name="username" value="@ViewBag.username" />
+                                <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
+
+                                <input type="submit" class="mood" value="inlove" />
+
+                            </form>
+                        </div>
+                        <div class="suggestion">
+                            <form asp-controller="Home" asp-action="Playlists" method="post" class="up3">
+                                <input type="hidden" name="mood" value="sad" />
+                                <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
+
+                                <input type="hidden" name="username" value="@ViewBag.username" />
+                                <input type="submit" class="mood" value="sad" />
+
+                            </form>
+                        </div>
+
+                        <div class="suggestion">
+                            <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
+                               More
+                            </a>
+                        </div>
+                    </div>
+                    
                     </div>
                    
                     <div class="video">
-                        <video autoplay loop>
+                        <img src="~/Resources/Playlist-cuate.png" />
+                       @* <video autoplay loop>
                             <source src="/Images/Playlist.mp4" type="video/mp4">
                             Your browser does not support the video tag.
-                        </video>
+                        </video>*@
                     </div>
                     
                 </div>

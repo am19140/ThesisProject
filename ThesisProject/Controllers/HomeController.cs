@@ -141,7 +141,7 @@ namespace ThesisProject.Controllers
         public ActionResult Upload(IFormFile file,string username,string profile)
         {
             ViewBag.username = username;
-            ViewBag.ProfileImage = profile;
+            ViewBag.ProfileImage = "/Resources/" + file.FileName;
 
             if (file != null) {
 
