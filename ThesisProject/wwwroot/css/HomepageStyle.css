@@ -118,7 +118,7 @@
 }
 
         .main .left .welcome-msg {
-            padding: 2%;
+            padding: 1%;
             font-size: 45px;
             color: var(--text-color); 
             text-align:end;
