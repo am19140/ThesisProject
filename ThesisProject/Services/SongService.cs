@@ -57,7 +57,7 @@ public class SongService
             var given_songs = new List<SongModel>();
             foreach (var genre in most_freq_genres)
             {
-                var list_genre = _context.songs.Where(x => x.mood == mood).Where(x => x.genre == genre.genre).ToList();
+                var list_genre = _context.songs.Where(x => x.mood == mood).Where(x => x.genre == genre.genre).OrderBy(x=>x.songname).ToList();
                 foreach (var l in list_genre)
                 {
                     given_songs.Add(l);
@@ -103,35 +103,86 @@ public class SongService
         return songs;
     }
 
-    public List<(SongModel songmodel,bool isLiked)> Like(string username,string mood,int songid,bool isliked)
+    public List<(SongModel songmodel, bool isLiked)> Like(string username, string mood, int songid, bool isliked)
     {
-        var recordtoremove = _context.likes.FirstOrDefault(x => x.songId == songid && x.username==username);
-        if (recordtoremove!=null)
-        {            
+        var recordtoremove = _context.likes.FirstOrDefault(x => x.songId == songid && x.username == username);
+        if (recordtoremove != null)
+        {
             _context.likes.Remove(recordtoremove);
             _context.SaveChanges();
         }
         else
         {
+            var id = _context.likes.OrderByDescending(x => x.id).FirstOrDefault();
             var likedsong = new LikedModel
             {
+                id=id.id+1,
                 username = username,
                 songId = songid
-                
+
             };
             _context.likes.Add(likedsong);
             _context.SaveChanges();
         }
-        var songs = _context.songs.Where(x => x.mood == mood).ToList();
 
-        List<(SongModel songmodel,bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
-        foreach (var song in songs)
+        var songs = _context.songs.Where(x => x.mood == mood).OrderBy(x => x.songname).ToList();
+
+        var listened = (from h in _context.history.ToList()
+                        join s in songs on h.songId equals s.songId
+                        where h.username == username && h.timesListened > 0
+                        orderby h.timesListened descending
+                        select new SongModel
+                        {
+                            songId = h.songId,
+                            songname = s.songname,
+                            artist = s.artist,
+                            duration = s.duration,
+                            mood = s.mood,
+                            genre = s.genre,
+                            songfile = s.songfile
+
+                        }).ToList();
+        if (listened.Count > 0)
         {
-            bool Isliked = _context.likes.Any(x => x.songId == song.songId && x.username==username);
-            tuples.Add((song,Isliked));
+            var most_frequent1 = listened.GroupBy(h => h.GetType().GetProperty("genre").GetValue(h))
+                .Select(g => new Genre { genre = g.Key.ToString(), count = g.Count() });
+
+            var most_freq_genres = most_frequent1.OrderByDescending(x => x.count).ToList().Take(3);
+            var given_songs = new List<SongModel>();
+            foreach (var genre in most_freq_genres)
+            {
+                var list_genre = _context.songs.Where(x => x.mood == mood).Where(x => x.genre == genre.genre).OrderBy(x => x.songname).ToList();
+                foreach (var l in list_genre)
+                {
+                    given_songs.Add(l);
+                }
+            }
+
+
+            List<(SongModel songmodel, bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
+
+            foreach (var song in given_songs)
+            {
+                bool isLiked = _context.likes.Any(x => x.songId == song.songId && x.username == username);
+                tuples.Add((song, isLiked));
+            }
+
+            return tuples;
         }
 
-        return tuples;
+
+        else
+        {
+            List<(SongModel songmodel, bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
+
+            foreach (var song in songs)
+            {
+                bool isLiked = _context.likes.Any(x => x.songId == song.songId && x.username == username);
+                tuples.Add((song, isLiked));
+            }
+
+            return tuples;
+        }
     }
 
     public List<SongModel> UnLike(string username, string mood, int songid, bool isliked)
