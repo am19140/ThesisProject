@@ -59,6 +59,26 @@
     padding-bottom: 2%;
     
 }
+.form {
+    width: 100%;
+    text-align: end;
+    margin-bottom: 2%;
+    
+}
+.more {
+    border: none;
+    font-size: 15px;
+    text-align: end;
+    border-radius: 20px;
+    background-color: #F2C469;
+    padding:0.5%;
+    cursor:pointer;
+
+}
+.more:hover{
+    color:white;
+    transition:var(--tran-04);
+}
 
 table {
     width: 100%;
@@ -85,6 +105,9 @@ table {
     overflow-x:hidden;
     white-space:nowrap;
     margin-right:10%;
+}
+.extra{
+    width:fit-content;
 }
 
 td:first-child,

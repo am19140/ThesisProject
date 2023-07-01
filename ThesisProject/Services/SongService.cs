@@ -12,17 +12,84 @@ public class SongService
         _context = context;
 
     }
-    public List<(SongModel songmodel,bool isLiked)> getSongList(string username,string mood)
+
+    public List<(SongModel songmodel, bool isLiked)> getAllSongs(string username, string mood)
     {
-        var songs = _context.songs.Where(x=>x.mood==mood).OrderBy(x=>x.songname).ToList();
-        List<(SongModel songmodel,bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
+        var songs = _context.songs.Where(x => x.mood == mood).OrderBy(x => x.songname).ToList();
+        List<(SongModel songmodel, bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
+
         foreach (var song in songs)
         {
-            bool isliked = _context.likes.Any(x => x.songId == song.songId && x.username==username);
-            tuples.Add((song,isliked));
+            bool isliked = _context.likes.Any(x => x.songId == song.songId && x.username == username);
+            tuples.Add((song, isliked));
         }
 
         return tuples;
+
+    }
+
+
+    public List<(SongModel songmodel,bool isLiked)> getSongList(string username,string mood)
+    {        
+        var songs = _context.songs.Where(x => x.mood == mood).OrderBy(x => x.songname).ToList();
+
+        var listened = (from h in _context.history.ToList()
+                        join s in songs on h.songId equals s.songId
+                        where h.username == username && h.timesListened > 0
+                        orderby h.timesListened descending
+                        select new SongModel
+                        {
+                            songId = h.songId,
+                            songname = s.songname,
+                            artist = s.artist,
+                            duration = s.duration,
+                            mood = s.mood,
+                            genre = s.genre,
+                            songfile = s.songfile
+
+                        }).ToList();
+        if (listened.Count > 0)
+        {
+            var most_frequent1 = listened.GroupBy(h => h.GetType().GetProperty("genre").GetValue(h))
+                .Select(g => new Genre { genre = g.Key.ToString(), count = g.Count() });
+
+            var most_freq_genres = most_frequent1.OrderByDescending(x => x.count).ToList().Take(3);
+            var given_songs = new List<SongModel>();
+            foreach (var genre in most_freq_genres)
+            {
+                var list_genre = _context.songs.Where(x => x.mood == mood).Where(x => x.genre == genre.genre).ToList();
+                foreach (var l in list_genre)
+                {
+                    given_songs.Add(l);
+                }
+            }
+
+
+            //var given_songs = _context.songs.Where(x => x.mood == mood).Where(x => x.genre == most_freq_genres.ElementAt(0).genre || x.genre == most_freq_genres.ElementAt(1).genre || x.genre == most_freq_genres.ElementAt(2).genre).ToList();
+
+            List<(SongModel songmodel, bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
+
+            foreach (var song in given_songs)
+            {
+                bool isliked = _context.likes.Any(x => x.songId == song.songId && x.username == username);
+                tuples.Add((song, isliked));
+            }
+
+            return tuples;
+        }
+        else {
+            List<(SongModel songmodel, bool isLiked)> tuples = new List<(SongModel songmodel, bool isLiked)>();
+
+            foreach (var song in songs)
+            {
+                bool isliked = _context.likes.Any(x => x.songId == song.songId && x.username == username);
+                tuples.Add((song, isliked));
+            }
+
+            return tuples;
+        }
+
+
     }
 
     public List<SongModel> getLikedSongs(string username)
@@ -106,8 +173,10 @@ public class SongService
         }
         else
         {
+            var id=_context.history.OrderByDescending(x=>x.id).FirstOrDefault();
             var listened_song = new HistoryModel
             {
+                id=id.id+1,
                 songId = songid,
                 username = username,
                 timesListened = 1

@@ -85,7 +85,12 @@
 
                 <audio class="audio" id="audioplayer">
                 </audio>
-
+                <form asp-controller="Home" asp-action="GenericPlaylists" method="post" class="form">
+                    <input type="hidden" name="mood" value="@ViewBag.mood" />
+                    <input type="hidden" name="username" value="@ViewBag.username" />
+                    <input type="hidden" name="profile" value="@ViewBag.ProfileImage" />
+                    <input type="submit" class="more" value="Discover more @ViewBag.mood songs" />
+                </form>
                 <table>
                     @if (Model.Count() != 0)
                     {
@@ -152,7 +157,9 @@
                                 }
                             </tr>
                         }
+                          
                     }
+                  
                     else
                     {
                         <tr>There are no songs for the mood @ViewBag.mood</tr>

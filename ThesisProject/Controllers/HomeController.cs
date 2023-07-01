@@ -66,6 +66,17 @@ namespace ThesisProject.Controllers
             return View("Playlists",SongModel);           
            
         }
+        public IActionResult GenericPlaylists(string mood,string username,string profile) {
+
+            var SongModel = _songService.getAllSongs(username,mood);
+            ViewBag.mood = mood;
+            ViewBag.username = username;
+            ViewBag.ProfileImage = profile;
+            return View("Playlists",SongModel);           
+           
+        }
+
+
 
         public IActionResult Favorites(string username,string profile) {
             ViewBag.username=username;
