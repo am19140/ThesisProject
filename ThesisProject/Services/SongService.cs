@@ -320,7 +320,7 @@ public class SongService
             lastname = registration.lastname,
             email = registration.email,
             gender = registration.gender,
-            profileImage = registration.profileImage
+            profileImage = "/Resources/profile.png"
         };
         _context.users.Add(newuser);
         _context.SaveChanges();
