@@ -67,6 +67,8 @@
         margin-right: 2%;
         flex-direction: column;
         flex: 1 2 auto;
+        padding-top:6%;
+        padding-bottom:6%;
     }
 
 .information table {
@@ -75,7 +77,24 @@
     padding-bottom:15%;
     padding-top:2%;
 }
-
+.form{
+    width:80%;
+}
+.information .form button {
+    background-color: #F2C469;
+    border-radius: 20px;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    margin-top: 1%;
+    color: white;
+    font-size: 18px;
+    width:100%;
+}
+.form button:hover {
+    background-color: #EB9481;
+    transition:var(--tran-05);
+}
 
 .image-editor{
     display:flex;

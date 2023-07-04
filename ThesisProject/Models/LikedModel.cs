@@ -10,9 +10,12 @@ namespace ThesisProject.Models
         public int id { get; set; }
 
         [Required]
+        [ForeignKey("username")]
         public string username { get; set; }
 
         [Required]
+        [ForeignKey("songId")]
+
         public int songId { get; set; }
     }
 }

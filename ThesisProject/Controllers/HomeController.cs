@@ -217,6 +217,23 @@ namespace ThesisProject.Controllers
 
         }
 
+        public IActionResult EditProfile(string username,string profile)
+        {
+            ViewBag.username = username;
+            ViewBag.ProfileImage = profile;
+            var profileinfo = _songService.EditProfile(username);
+
+            return View("EditProfile", profileinfo);
+        }
+
+        public IActionResult ChangeInformation(UserModel userinfo,string username) {
+            ViewBag.username = username;
+            ViewBag.ProfileImage = userinfo.profileImage;
+            _songService.ChangeInfo(userinfo, username);
+
+            var profileinfo = _songService.getProfileInfo(userinfo.username);
+            return View("Profile",profileinfo);
+        }
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

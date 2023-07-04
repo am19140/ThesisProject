@@ -188,22 +188,11 @@ public class SongService
     public List<SongModel> UnLike(string username, string mood, int songid, bool isliked)
     {
         var recordtoremove = _context.likes.FirstOrDefault(x => x.songId == songid && x.username == username);
-        if (recordtoremove != null)
-        {
-            _context.likes.Remove(recordtoremove);
-            _context.SaveChanges();
-        }
-        else
-        {
-            var likedsong = new LikedModel
-            {
-                username = username,
-                songId = songid
-
-            };
-            _context.likes.Add(likedsong);
-            _context.SaveChanges();
-        }
+                   
+        _context.likes.Remove(recordtoremove);        
+        _context.SaveChanges();
+        
+        
         var songs = (from l in _context.likes
                      join
                      s in _context.songs on l.songId equals s.songId
@@ -281,6 +270,25 @@ public class SongService
         return listened;
 
 
+    }
+    public UserModel EditProfile(string username)
+    {
+        var info = _context.users.FirstOrDefault(x => x.username == username);
+        return info;
+
+    }
+
+    public void ChangeInfo(UserModel user,string username)
+    {
+        var user_to_change = _context.users.Where(x => x.username == username).FirstOrDefault();
+        if (user_to_change != null)
+        {            
+            user_to_change.firstname = user.firstname;
+            user_to_change.lastname=user.lastname;
+            user_to_change.email = user.email;
+            user_to_change.password = user.password;
+            _context.SaveChanges();
+        }
     }
 
     public  (UserModel,SongModel,Genre,Artist,Mood) getProfileInfo(string username)

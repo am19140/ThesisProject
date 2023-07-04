@@ -1,0 +1,246 @@
+﻿@model UserModel
+
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/EditProfileStyle.css" />
+    <link rel="stylesheet" href="~/css/MenuStyle.css" />
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+}
+
+
+<!--Side Menu-->
+<body>
+    <nav class="sidebar close">
+        <header>
+            <div class="image-text">
+                <span class="image">
+                    <!--<img src="logo.png" alt="">-->
+                </span>
+                <div class="text logo-text">
+                    <span class="name">Musification</span>
+                    <span class="profession"><i>You</i> choose</span>
+                </div>
+            </div>
+            <i class='bx bx-chevron-right toggle'></i>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a class="homebtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Homepage">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Homepage</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="favbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Favorites">
+                            <i class='bx bx-heart icon'></i>
+                            <span class="text nav-text">Favorites</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="moodbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Moods">
+                            <i class='bx bx-happy-alt icon'></i>
+                            <span class="text nav-text">Moods</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
+                            <i class='bx bx-male icon'></i>
+                            <span class="text nav-text">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li class="">
+                    <a class="logoutbtn" asp-controller="Home" asp-action="Login">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+
+
+            </div>
+        </div>
+    </nav>
+
+    <!--Main Section-->
+    <section class="home">
+
+        <div class="header">
+            <div class="text title">Edit your Profile</div>
+            <div class="right-corner">
+                <img class="profile-pic" src="@Model.profileImage"></img>
+                <a class="profbtn" asp-controller="Home" asp-route-username="@ViewBag.username" asp-route-profile="@ViewBag.ProfileImage" asp-action="Profile">
+                    <span class="smalltext username ">@ViewBag.username</span>
+                </a>
+            </div>
+        </div>
+        <div class="main">
+            <div class="information">
+                <div class="image-editor">
+
+                    <div class="profile-img">
+                        @if (!string.IsNullOrEmpty(Model.profileImage))
+                        {
+                            <img class="profile-picture" src="@Url.Content(Model.profileImage)" />
+                        }
+                        else
+                        {
+                            <img src="/Resources/icons8-male-user-96.png" />
+                        }
+                        <div class="edit-btn icon smalltext">
+                            <i class='bx bx-pencil icon' id="pencil"></i>
+                        </div>
+                    </div>
+                    <form style="display:none;" asp-controller="Home" enctype="multipart/form-data" asp-action="Upload" method="post" id="fileUploadForm">
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+                        <input type="file" name="file" id="ImageData" />
+                        <input type="hidden" name="profile" value="@Model.profileImage" />
+
+                        <button type="submit">Save Changes</button>
+
+                    </form>
+                </div>
+
+                <table class="smalltext">
+                    <form asp-controller="Home" asp-action="ChangeInformation" method="post" class="form">
+                        <input type="hidden" asp-for="profileImage" value="@Model.profileImage" />
+                        <input type="hidden" name="username" value="@ViewBag.username" />
+
+                        <tr>
+                            <td class="infoname">Username</td></tr>
+                        <tr>
+                            <td class="infotext">
+                                <i>You can't change your username, because it will affect your Musification experience</i>
+                                                             
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="infoname">Change Password</td>
+                        </tr>
+                        <tr>
+                        <td><input type="password" value="@Model.password" asp-for="password" /></td>
+                        </tr>
+                        <tr>
+                            <td class="infoname">Confirm Password</td>
+                        </tr>
+                        <tr>
+                        <td><input type="password" value="@Model.password"/></td>
+                        </tr>
+                        
+                        <tr>
+                            <td class="infoname">First Name</td>
+                        </tr>
+                        <tr>
+                            <td class="infotext">
+                            <input type="text" value="@Model.firstname" asp-for="firstname" />
+
+                                    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="infoname">Last Name</td>
+
+                        </tr>
+                        <tr>
+                            <td class="infotext">
+                            <input type="text" value="@Model.lastname" asp-for="lastname" />
+                        </td>
+                        </tr>
+                        <tr>
+                            <td class="infoname">Email address</td>
+                        </tr>
+                        <tr>
+                            <td class="infotext">
+                            <input type="text" value="@Model.email" asp-for="email" />
+                        </td>
+                        </tr>
+                        <tr>
+                            <td class="infoname">Gender</td>
+                        </tr>
+                        <tr>
+                            <td class="infotext">
+                            <input type="text" value="@Model.gender" asp-for="gender" />
+                        </td>
+                        </tr>
+                        <tr>
+                        <td class="infotext">
+                                <button type="submit">Save Changes</button>
+                            </td>
+                        </tr>
+                   
+
+
+                    </form>
+                   
+                </table>
+
+
+            </div>
+            
+        </div>
+
+
+
+
+    </section>
+
+
+    <!--Javascripts-->
+    <script>
+        function Hide() {
+
+            const play = document.querySelector('[class*=play]');
+            const pause = document.querySelector('[class*=pause]');
+            if (play.style.display === 'block' && pause.style.display === 'none') {
+                play.style.display = 'none';
+                pause.style.display = 'block';
+            }
+            else {
+                play.style.display = 'block';
+                pause.style.display = 'none';
+            }
+
+        }
+        var editor = document.getElementById('fileUploadForm');
+        var pencil = document.getElementById('pencil').addEventListener("click", () => {
+            editor.style.display = 'block';
+        })
+
+
+        const body = document.querySelector('body'),
+            sidebar = body.querySelector('nav'),
+            toggle = body.querySelector(".toggle"),
+            searchBtn = body.querySelector(".search-box"),
+            modeSwitch = body.querySelector(".toggle-switch"),
+            modeText = body.querySelector(".mode-text"),
+            buttonplay = body.querySelector(".play"),
+            buttonpause = body.querySelector(".pause");
+
+        toggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        })
+        searchBtn.addEventListener("click", () => {
+            sidebar.classList.remove("close");
+        })
+        modeSwitch.addEventListener("click", () => {
+            body.classList.toggle("dark");
+
+            if (body.classList.contains("dark")) {
+                modeText.innerText = "Light mode";
+            } else {
+                modeText.innerText = "Dark mode";
+
+            }
+        });
+
+
+    </script>
+</body>
+
+

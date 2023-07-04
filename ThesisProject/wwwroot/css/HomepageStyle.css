@@ -159,6 +159,13 @@
     margin-top:-2%;
 }
 
+.top1 {
+    color: #EB9481;
+    margin-bottom:2%;
+    margin-top:-2%;
+    font-size:30px;
+}
+
 .song-title {
     font-weight: bold;
 }
@@ -203,4 +210,13 @@ input[type=submit], .decoration a {
     width:100%;
     align-content:center;
     justify-content:space-evenly;
+}
+
+.low-activity{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    text-align:center;
 }

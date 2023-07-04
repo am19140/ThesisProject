@@ -8,10 +8,13 @@ namespace ThesisProject.Models
     {
         [Key]
         public int id { get; set; }
+
         public string username { get; set; }
+
         public int songId { get; set; }
 
         public int timesListened { get; set; }
 
+       
     }
 }

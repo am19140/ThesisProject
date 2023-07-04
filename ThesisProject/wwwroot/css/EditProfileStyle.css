@@ -1,0 +1,190 @@
+﻿:root {
+    /* ===== Colors ===== */
+    --body-color: #fff;
+    --sidebar-color: #FFF;
+    --primary-color: #f5c0e0;
+    --primary-color-light: #F6F5FF;
+    --toggle-color: #DDD;
+    --text-color: #707070;
+    --light-text-color: #white;
+    --pink: #FF33CC;
+    --light-pink: #FF66CC;
+    --light-blue: #33CCFF;
+    --yellow: #FFC000;
+    --green: #92D050;
+    --tran-03: all 0.2s ease;
+    --tran-03: all 0.3s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.3s ease;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+}
+.home {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+}
+
+.right-corner {
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    font-size: 15px;
+    display: flex;
+    width: 150px;
+    justify-content: space-between;
+}
+   
+.profbtn {
+    text-decoration: none;
+    color: var(--text-color);
+}
+.main {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+    padding-bottom:2%;
+    justify-content:center;
+    align-items:center;
+    align-self:center;
+    
+}
+
+.main .information{
+   
+}
+
+    .main .information {
+        background-color: #F2C469;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 20px;
+        margin-right: 2%;
+        flex-direction: column;
+        flex: 1 2 auto;
+        height: 80%;
+    }
+
+.information table {
+    height: 90%;
+    width: 70%;
+    padding-bottom:10%;
+    padding-top:2%;
+}
+    table tr{
+        
+    }
+
+.information input{
+    border-radius:20px;
+    border:none;
+    padding:1%;
+    width:100%;
+}
+
+.image-editor{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    
+}
+.edit{
+    background-color: transparent;
+    cursor: pointer;
+    border: 0px;
+    font-size: 20px;
+    color: #FFF;
+
+}
+
+td{
+    text-align:center;
+}
+.image-editor .icon{
+    cursor:pointer;
+}
+.profile-img {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8%;
+}
+
+    .profile-img img {
+        height:70px;
+        width:70px;
+        border-radius:50%;
+    }
+
+    .image-editor form{
+        display:flex;
+        flex-direction:column;
+        padding:2%;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+
+    }
+    .image-editor .edit-btn{
+        height:100%;
+        display:flex;
+        align-items:end;
+    }
+
+    .image-editor form input[type="file"]::file-selector-button{
+        background-color:white;
+        border-radius:20px;
+        padding:1%;
+        border:none;
+        text-align:center;
+        cursor:pointer;
+        margin-left:20%;
+    }
+       
+
+        .information .infotext {
+            font-size: 15px;
+            text-align: left;
+            display:flex;
+            justify-content:center;
+            flex-direction:column;
+            align-items:center;
+        }
+
+i {
+    text-align: justify;
+    color: #FAE4A6;
+    font-weight: bold;
+}
+.information .infoname{
+    color:var(--sidebar-color);
+    width:80%;
+    text-align:left;
+}
+button {
+    background-color: #FAE4A6;
+    border-radius: 20px;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+    margin-top: 1%;
+    color:white;
+    font-size:18px;
+}
+    button:hover {
+        background-color: #EB9481;
+        transition:var(--tran-05);
+    }
+

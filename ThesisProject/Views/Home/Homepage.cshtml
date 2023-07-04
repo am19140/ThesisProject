@@ -90,7 +90,7 @@
                     </h1>
                 </div> 
                 <div class="right">
-                    @if (Model.Item1 != null)
+                    @if (Model.Item1.Count>4)
                     {
                         <div class="top">
                             <h2>Your top blasts</h2>
@@ -112,6 +112,13 @@
                                 i++;
                             }
                         </table>
+                    }
+                    else
+                    {
+                        <div class="low-activity">
+                            <h2 class="top1">Looks like your activity is super low</h2>
+                            <h3>Start your listening journey and your top blasts will appear here!</h3>
+                        </div>
                     }
                 </div>
             </div>

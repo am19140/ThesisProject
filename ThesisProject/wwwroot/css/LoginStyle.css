@@ -96,6 +96,7 @@ justify-content:center}
     background-color: #F7E1DF;
     border: none;
     font-size: 15px;
+    overflow:visible;
 }
     .submit-btn:hover {
         transform: scale(1.05);
@@ -103,6 +104,23 @@ justify-content:center}
         transition: var(--tran-04);
         background-color: #F3C5BC;
     }
+    .signup-btn {
+    margin-top: 2%;
+    width: 60%;
+    padding: 1.5%;
+    border-radius: 15px;
+    transition: all 0.3s;
+    background-color: #F7E1DF;
+    border: none;
+    font-size: 15px;
+    overflow:visible;
+}
+        .signup-btn:hover {
+            transform: scale(1.05);
+            cursor: pointer;
+            transition: var(--tran-04);
+            background-color: #F3C5BC;
+        }
 
 .register{
     width:100%;
